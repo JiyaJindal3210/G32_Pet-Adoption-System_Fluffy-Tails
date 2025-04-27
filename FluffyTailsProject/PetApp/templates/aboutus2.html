@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title_block %} About FluffyTails {% endblock %}
+
+{% block head %}
+<style>
+
+    .logo6 img {
+        height: 80px;
+        width: 130px;
+        border-radius: 50%;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        text-align: center;
+        background-color:#3e0950;
+        color: white;
+    }
+
+    .container {
+        margin-top: 50px;
+        width: 80%;
+        padding: 50px 0;
+    }
+
+    h1 {
+        color: white;
+        font-size: 36px;
+        text-align: left;
+    }
+
+    p {
+        color: #333;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .cta-btn {
+        display: inline-block;
+        background-color: #6a0dad;
+        color: #fff;
+        padding: 12px 24px;
+        font-size: 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+
+    .cta-btn:hover {
+        background-color: #4a087b;
+    }
+
+    .image-container {
+        margin-left: 0%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0%;
+    }
+
+
+
+    img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .features {
+        background-color: white;
+        padding: 30px;
+        margin: 2px auto;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        transition: transform 0.3s ease;
+        margin-left: 0;
+        font-style: italic;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .features p {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .features:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 15px gray;
+    }
+
+    .p2 img {
+        max-width: 100%;
+        height: 300px;
+        width: 250px;
+
+
+    }
+</style>
+{% endblock %}
+
+{% block main_block %}
+<div class="container">
+    <h1>About Fluffy Tails</h1>
+    <div class="features">
+        <p>Welcome to fluffy tails, your ultimate resource for pet adoption! With over 25 years of experience in the
+            animal welfare industry, we’re here to provide you with everything you need. From expert dog and cat
+            care tips to comprehensive listings of adoptable pets in your area, we make pet adoption a breeze.
+            Discover more today about Petfinder and our mission to connect loving families with furry companions!
+            At Fluffy Tails, we believe that every animal deserves a loving home. That's why we provide guidance and
+            support throughout the adoption process, from selecting the right pet to tips on how to integrate them
+            into your household. We also offer resources on training, nutrition, and overall pet well-being to help
+            your new companion thrive.
+
+            Join us in making a difference and giving these pets a second chance at life. Together, we can create a
+            world where every pet has a loving family and every family has a furry friend to cherish.
+        </p>
+
+        <br><br><br><br>
+
+        <div class="p2">
+            <img
+                src="https://th.bing.com/th?id=OIP.5aKhA8rhSGnJzNnkGJgtLwHaLH&w=204&h=306&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2">
+        </div>
+    </div>
+
+
+    <div class="image-container">
+        <img src="https://th.bing.com/th/id/OIP.EwhuwsIwIZanhFc_FM0sHQHaFE?w=273&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+            alt="Adoptable Pets">
+        <img src="https://th.bing.com/th/id/OIP.WODCdOqiyqjOSUkvy5Uf4QHaCL?w=334&h=103&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+            width="700px">
+    </div>
+
+    <br><br><br>
+
+    <div class="features">
+        <p>With a strong network of shelters and dedicated volunteers, we make pet adoption simple and heartwarming.
+            Whether you’re looking for a playful pup, a snuggly kitten, or a gentle senior pet, we’re here to help you
+            find your perfect match.From the moment you meet your future best friend, you'll know it’s meant to be. Our
+            network works tirelessly to ensure every pet is given a chance at a loving home, with care and support along
+            the way. We believe that adoption is not just about finding a pet—it's about building a lasting bond.
+            Whether you're a first-time pet owner or an experienced one, we guide you through every step of the process,
+            ensuring a smooth and joyful transition. Our team is here to offer advice, support, and resources to make
+            sure your new furry friend thrives in their forever home.
+            Join us in giving pets the love they deserve and creating life-long memories. Together, we’re changing
+            lives—one adoption at a time.</p>
+    </div>
+    <a href="{% url 'dogs' %}" class="cta-btn">Find Your Pet Now!</a><br><br><br><br>
+
+    <div class="image-container">
+        <img src="https://i.pinimg.com/236x/9a/06/48/9a0648bceeaf921f89a9c9e1df1ed215.jpg" width="500px" height="300px">
+        <img src="https://i.pinimg.com/236x/6b/6d/3a/6b6d3a29fd5d1b6d741a1014dd1259b3.jpg" width="600px" height="300px">
+    </div>
+</div>
+{% endblock %}

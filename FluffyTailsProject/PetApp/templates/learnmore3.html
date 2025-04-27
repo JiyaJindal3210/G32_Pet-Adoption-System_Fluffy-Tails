@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %} Learn More {% endblock %}
+
+{% block head %}
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: purple; 
+    color: #333;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.o div h2 {
+    text-align: center;
+    color: #6a0dad; 
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+article {
+    width: 65%;
+    background: #f9f9f9; 
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+    margin-top: 150px;
+}
+
+article:hover {
+    transform: scale(1.02);
+}
+
+aside {
+    width: 30%;
+}
+
+.match-box,
+.shelter-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 150px;
+}
+
+/* Buttons */
+button {
+    background-color: #ff4081; /* Hot Pink */
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #ff1a66;
+    transform: scale(1.05);
+}
+
+/* Paragraph & List Styling */
+main p,
+ul {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Centered Header */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6a0dad;
+}
+
+
+
+</style>
+{% endblock %}
+
+
+
+
+
+
+{% block main_block %}
+
+
+<main>
+    <article>
+        <p>Thank you for using fluffytails! We’re here to help you every step of the way from “just looking” at over
+            250,000 adoptable pets, to bringing your pet home, to living a long and happy life with your new family
+            member.
+
+            The following links will take you to some of the most frequently asked questions about adopting a pet that
+            you see on Petfinder. If you can’t find the answer below, please contact us (see the bottom of this page)
+            with any additional questions you have.</p>
+        <img src="https://www.petfinder.com/static/786d514d93ec19dc783abec09c9670c7/386ce/Dog-years_0.webp">
+        <div class="o"><h2>How Do I Search For a Pet?</h2></div>
+        <p>Petfinder.com is a searchable list of pets from over 11,000 shelters and rescue groups across the US, Canada,
+            and Mexico. To find an adoptable pet, you can begin your search using “Find a Pet” located above. Since
+            Petfinder is updated regularly, we recommend that you keep checking back or create a saved search email
+            alert to be notified when new pets matching your search criteria are added to the site</p>
+
+        <ul>
+            <li>Can I Save My Search or Be Notified When New Pets Are Available?
+                To be notified by email when pets matching your search criteria are first posted on the site, use our
+                saved search feature. After performing a search, you will see a button with a bell icon to the right of
+                your search results. Click on this button to set an email alert for your search. To manage all saved
+                searches you can login or create and account</li>
+            <li>Is the Pet I See on Petfinder Still Adoptable?
+                Across the 11,000 shelter and rescue groups in Petfinder’s North American network, each is responsible
+                for updating adoptable pet listings. To learn about a specific pet, please contact the shelter or rescue
+                directly by going to the Pet Profile page and clicking the “Ask About” button.</li>
+            <li>How Often is Petfinder Updated?
+
+                Because each shelter and rescue group is responsible for keeping its adoptable pet listings current,
+                Petfinder is continuously updated.</li>
+        </ul>
+        <div class="o"><h2>How Do I Adopt a Pet I See On fluffytails?</h2></div>
+        <p>Petfinder is a website and searchable database for over 11,000 animal shelters and rescue groups across the
+            US, Canada and Mexico to post their adoptable pets. While Petfinder does provide a web-based adoption
+            platform for groups across North America, we are not involved in any of our members’ pet adoptions. Each
+            adoption group using our site has its own adoption policies and procedures and solely handles its own pet
+            adoptions. To adopt a pet you see listed on Petfinder, please click the “Ask About” button on the pet’s
+            profile. You will then be given the group’s contact information and, if an email is available for that
+            group, you will be able to email that group using our form.</p>
+        <ul>
+            <li>How Do I Meet a Pet I See on fluffytail?
+                Once you find a pet you’re interested in adopting, you’ll probably want to meet him or her. Go to the
+                Pet Profile page by clicking on the pet’s picture or name on a search results page. This takes you to
+                the pet’s detail page. Click “Ask About” to directly contact the shelter or rescue to inquire further.
+            </li>
+            <li>Does Contacting the Shelter or Rescue Group Reserve the Pet I’m Interested In?
+                Submitting an adoption inquiry does not guarantee that the pet you’ve inquired about will still be
+                available. For more information regarding the status of your inquiry, or the pet you’ve applied for,
+                please contact the shelter or rescue group that listed the pet. The shelter’s address and contact
+                information can also be found on the pet’s profile page.</li>
+            <li>Do I Need to Apply to fluffytails?
+                No. Once you’ve submitted an inquiry to an adoption group, the shelter or rescue group with the pet
+                you’re interested in will be sent your information. It is then up to the shelter or rescue group to
+                determine whether it’s a match.</li>
+            <li>How Will I Know If I’ve Been Approved to Adopt a Pet?
+                After submitting an adoption inquiry, the shelter or rescue group with the pet you’re interested in will
+                contact you. You may also reach out to the shelter or rescue group directly to follow up</li>
+            <li>How Long Will It Take to Hear Back from the Adoption Group?
+                Petfinder is a community and, like all communities, each individual or organization is a little bit
+                different. Some days you might send in an inquiry and get a response within a few minutes and other
+                groups may take a few days or a week. Don’t be afraid to follow up with the shelter or rescue group</li>
+        </ul>
+        <div class="div"><h2>How Can I Adopt a Pet I See On Petfinder?</h2></div>
+        <p>Petfinder is a website and searchable database for nearly 14,000 animal shelters and rescue groups across the
+            US, Canada and Mexico to post their adoptable pets. While Petfinder does provide a web-based adoption
+            platform for groups across North America, we are not involved in any of our members’ pet adoptions. Each
+            adoption group using our site has its own adoption policies and procedures and solely handles its own pet
+            adoptions. To adopt a pet you see listed on Petfinder, please click the "Adopt Me" button or the "Contact
+            this Organization" button on the pet's profile. You will then be given the group's contact information and,
+            if an email is available for that group, you will be able to email that group using our form. More questions
+            about adopting a pet:</p>
+        <ul>
+            <li>Does Contacting the Adoption Group Put The Pet on Hold?
+                Submitting an adoption inquiry does not guarantee the pet you’ve applied for, nor does it place a pet
+                “on hold”. For more information regarding the status of your application, or the pet you’ve applied for,
+                please contact the shelter or rescue group listing the pet directly.</li>
+            <li>Does Contacting the Shelter or Rescue Group Reserve the Pet I’m Interested In?
+                Submitting an adoption inquiry does not guarantee that the pet you’ve inquired about will still be
+                available. For more information regarding the status of your inquiry, or the pet you’ve applied for,
+                please contact the shelter or rescue group that listed the pet. The shelter’s address and contact
+                information can also be found on the pet’s profile page.</li>
+            <li>Am I Applying to Petfinder?
+                No. Once you’ve submitted an inquiry to an adoption group, the shelter or rescue group with the pet
+                you’re interested in will be sent your information. It is then up to the shelter or rescue group to
+                determine whether it’s a match</li>
+            <li>How Will I Know If I've Been Approved to Adopt a Pet?
+                After submitting an adoption inquiry, the shelter or rescue group with the pet you’re interested in will
+                contact you. You may also reach out to the shelter or rescue group directly to follow up.</li>
+            <li>How Long Will It Take to Hear Back From The Adoption Group?
+                Petfinder is a community and, like all communities, each individual or organization is a little bit
+                different. Ideally, when you visit an animal shelter someone will greet you when you walk through the
+                door, escort you in to meet the pets and answer your questions. Sometimes though, the person at the desk
+                is on a tough phone call, everyone in the reception office is tied up with two boxes of kittens that
+                just arrived, and the volunteer in the dog kennels just started and has as many questions as you do.
+                Likewise, some days you might send in an inquiry and get a response within a few minutes and other
+                groups may take a few days or a week. Don’t be afraid to follow up with the shelter or rescue group.
+            </li>
+        </ul>
+        <div class="o"><h2>What Are The Requirements For Adopting A Pet?</h2></div>
+        <p>Each adoption group that lists its pets on Petfinder has its own rules and requirements for adopting pets. If
+            you’re interested in a specific pet, please reach out to the adoption group that created the pet listing to
+            find out what their policies are</p>
+        <ul>
+            <li>Can I Adopt a Pet Who’s Out of State?
+                Thank you for your interest in adopting a pet! Each adoption group that lists its pets on Petfinder has
+                its own rules and requirements for adopting out pets. Petfinder doesn’t dictate adoption group policy,
+                including adoption requirements and whether out-of-state adoptions are allowed by each group. If you’re
+                interested in a specific pet, please reach out to the adoption group that has that pet. (You can contact
+                the group using the contact information found of the pet’s profile page).</li>
+            <li>Does Contacting the Shelter or Rescue Group Reserve the Pet I’m Interested In?
+                Submitting an adoption inquiry does not guarantee that the pet you’ve inquired about will still be
+                available. For more information regarding the status of your inquiry, or the pet you’ve applied for,
+                please contact the shelter or rescue group that listed the pet. The shelter’s address and contact
+                information can also be found on the pet’s profile page.</li>
+            <li>Will There Be An Adoption Fee?
+                Petfinder doesn’t dictate adoption group policy, including adoption requirements and fees. If you’re
+                interested in a specific pet, please contact the adoption group that created the pet listing through the
+                Pet Profile page or Member Home Page.</li>
+            <li>Why Do Shelters and Rescue Groups Charge Adoption Fees?
+                Adoption fees help cover the medical care of the animal while he or she waits for a new home, as well as
+                food and transportation costs. These fees help to provide care for the other animals in the shelter or
+                rescue group who may have medical bills that are much higher than any possible adoption fee. The money
+                also acts as a donation to help support the organization as a whole, allowing the group to continue its
+                efforts to rescue and rehome pets.</li>
+
+        </ul>
+
+
+
+    </article>
+
+    <aside>
+        <div class="match-box">
+            <img src="https://i.pinimg.com/236x/fd/9f/41/fd9f4180ea0f222efd336a4c8affc96e.jpg" height="400px"
+                width="300px">
+        </div>
+        <div class="shelter-box">
+            <img src="{% static 'images/ADS.jpg' %}" height="400px" width="300px">
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <div class="match-box">
+            <img src="https://i.pinimg.com/474x/68/79/25/687925314776cf55ffd56d36d6d36a27.jpg" height="400px"
+                width="300px">
+        </div>
+    </aside>
+
+</main>
+
+
+{% endblock %}

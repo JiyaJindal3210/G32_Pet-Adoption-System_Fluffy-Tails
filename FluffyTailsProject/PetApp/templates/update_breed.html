@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title_block %}Update Breed{% endblock %}
+
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to right, #ffd6e8, #e0f7ff);
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+        margin-top: 180px;
+        color: #ff69b4;
+        text-align: center;
+        font-weight: 700;
+        text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.2);
+    }
+
+    form {
+        background-color: #fff9f9;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+        margin-top: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    label {
+        font-weight: 600;
+        color: #ff69b4;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #ffc0cb;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary {
+        background-color: #87cefa;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #6ab0e6;
+    }
+
+    .btn-secondary {
+        background-color: #ff6f61;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .btn-secondary:hover {
+        background-color: #e0554a;
+    }
+
+    /* Paw background (optional) */
+    body::before {
+        content: "";
+        background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
+        opacity: 0.04;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+</style>
+{% endblock %}
+
+{% block main_block %}
+
+<h3 class="text-center">Update Breed Details</h3>
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Breed Name:</label>
+            <input type="text" id="name" name="name" value="{{ breed.name }}" required class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="species_name" class="form-label">Species:</label>
+            <input type="text" id="species_name" name="species_name" value="{{ breed.species }}" required class="form-control">
+        </div>
+
+        <div class="text-center mt-4">
+            <input type="submit" value="Update Breed" class="btn btn-primary">
+            <a href="{% url 'addbreed' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block title_block %} Foundation {% endblock %}
+
+{% block head %}
+<style>
+
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #ffecfe;
+        background-color:#3e0950;
+        color: white;
+    }
+
+
+
+    .image-overlay {
+        position: relative;
+        background-image: url('https://img.freepik.com/free-photo/view-cats-dogs-showing-friendship_23-2151806305.jpg');
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 60vh;
+        margin-top: 180px;
+        
+    }
+
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bolder;
+        text-shadow: 2px 2px 5px rgba(240, 224, 224, 0.7);
+    }
+
+    .image-overlay1 {
+        position: relative;
+        background-image: url('https://img.freepik.com/premium-vector/vector-illustration-abstract-dogs-cats-pattern_1000823-44089.jpg');
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 50vh;
+    }
+
+    .overlay1-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(233, 209, 209, 0.7);
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    main h2 {
+        font-size: 2.3rem;
+        margin-bottom: 20px;
+        color: white;
+        font-weight: bold;
+    }
+
+    main p {
+        font-size: 1.4rem;
+        color: white;
+    }
+
+   
+    .projects {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .project {
+        background-color: rgb(227, 191, 240);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .project img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .project h3 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    .project p {
+        font-size: 1.2rem;
+        color: #060000;
+    }
+
+    .news {
+        display: flex;
+        gap: 20px;
+    }
+
+    .news article {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 30%;
+    }
+
+    .news article h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .news article p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    .news article a {
+        text-decoration: none;
+        color: #2a9d8f;
+    }
+
+
+    
+
+    .service-box:hover {
+       
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .service-box h3:hover {
+        
+        font-weight: bold;
+        transition: color 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}
+
+
+
+
+
+
+{% block main_block %}
+
+<header>
+    <div class="image-overlay">
+        <div class="overlay-text">
+            <h1><strong>Welcome to FluffyTails</strong>
+                <br>
+                Your gateway to finding a furry friend!
+            </h1>
+        </div>
+    </div>
+</header>
+
+<section id="about" class="container text-center my-5">
+    <h2>About Us</h2>
+    <p>We are dedicated to helping pets find loving homes. Our foundation supports animal shelters and promotes
+        adoption.</p>
+</section>
+
+<section id="services" class="container my-5">
+    <h2 class="text-center">Our Services</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="service-box">
+                <h3>Adopt</h3>
+                <p>We help connect you with the best furry friends in need of a home.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service-box">
+                <h3>Volunteer</h3>
+                <p>Join us in making a difference. Volunteer to help pets in need.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service-box">
+                <h3>Donate</h3>
+                <p>Your donations help us provide care and support for animals in shelters.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Mission Section -->
+<section id="mission" class="section">
+    <div class="container">
+        <h2>Our Mission</h2>
+        <p>At FluffyTails, our mission is to help animals in need find their forever homes by making
+            the adoption process accessible, straightforward, and heartwarming for both pets and potential
+            pet parents. We believe that every animal, whether from a shelter or rescue, deserves a chance
+            to experience a loving, safe, and permanent home. We work closely with animal shelters, foster
+            families, and rescue organizations to connect pets of all shapes and sizes with people who can
+            provide them with the care and attention they deserve. Whether you're looking to adopt a dog,
+            cat, or another pet, we aim to make the journey as smooth as possible, ensuring that every
+            adoption is a successful match.</p>
+        <br>
+        <p>Our commitment goes beyond just connecting pets with people. We are deeply invested in
+            reducing the number of animals in shelters and encouraging responsible pet ownership
+            through education and awareness. We believe that adoption is not just about finding a
+            pet—it's about fostering a lifelong bond built on trust, compassion, and care. Through
+            ongoing support for new pet owners, community outreach, and collaborations with local
+            organizations, we strive to create a compassionate environment where pets are given
+            second chances, and families are equipped to provide loving homes. Together, we can
+            change the lives of countless animals and create a future where every pet has a loving
+            family to call their own.
+        </p>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section id="projects" class="section">
+    <div class="container">
+        <h2>Featured Programs & Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <img src="https://dyeranimalclinic.com/wp-content/uploads/2020/05/Pet-adoption-scaled.jpg"
+                    alt="Adoption Campaigns">
+                <h3>"Clear the Shelters Campaign"</h3>
+                <p>Our annual event where we partner with local shelters to help as many pets as possible find
+                    their forever homes. Adoption fees are reduced, and more pets are featured for adoption!</p>
+            </div>
+            <div class="project">
+                <img src="https://zoomadog.co.uk/cdn/shop/products/7_600x500.jpg?v=1733835377"
+                    alt="Special Needs Pet Programs">
+                <h3>""Special Needs Pet Placement""</h3>
+                <p>Many wonderful pets have special needs that require extra love and care. Our program helps find
+                    homes for these pets by educating potential adopters on how to meet their unique requirements.
+                </p>
+            </div>
+            <div class="project">
+                <img src="https://www.pamperedpetresorts.com/wp-content/uploads/2020/03/dog_boarding_naples_florida.jpg"
+                    alt="Partnerships with Local Shelters">
+                <h3>"Shelter Partnership Program"</h3>
+                <p>We collaborate with over 100 local shelters across the country to promote pets available for
+                    adoption and assist in getting them the best care and exposure they need to find their forever
+                    families.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image-overlay1">
+    <div class="text-overlay1">
+
+    </div>
+</section>
+
+<!-- News Section -->
+<section id="news" class="section">
+    <div class="container">
+        <h2>Latest News</h2>
+        <div class="news">
+            <article>
+                <h3><strong>Adoption Stories</strong> </h3>
+                <p>"Happy Tails: Meet Max, Adopted After 6 Months of Waiting!"<br>
+                    Max, a playful Labrador mix, had been waiting for months in a local shelter for
+                    the perfect family. Thanks to our "Clear the Shelters" campaign, Max was adopted
+                    into a loving home where he now enjoys daily walks and lots of belly rubs!</p>
+
+            </article>
+            <article>
+                <h3><strong>Upcoming Adoption Events</strong></h3>
+                <p>
+                    "Join Us for Our Spring Adoption Fair!"<br>
+                    This spring, we're hosting an adoption fair featuring hundreds of adoptable pets from shelters
+                    and rescues across the city! Bring your family and friends to meet the pets and find your new
+                    best friend. Adoption fees will be waived for the first 50 adopters.
+                    Don't miss out on this amazing opportunity to give a pet a forever home!
+                </p>
+            </article>
+            <article>
+                <h3><strong>New Partnerships </strong></h3>
+                <p>"New Partnership with Local Shelters to Increase Adoptions"<br>
+
+
+                    Together, we will help even more animals find their forever homes by expanding our
+                    reach and sharing resources to support local shelters in need. This collaboration
+                    marks a new chapter in our ongoing mission to reduce the number of pets in shelters.</p>
+
+            </article>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% endblock %}

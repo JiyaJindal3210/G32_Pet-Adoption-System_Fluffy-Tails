@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluffyTails - Find Your Furry Companion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+
+
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #290324;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+
+
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #540c55;
+            /* Coral/Salmon color */
+        }
+
+        .nav-link {
+
+            color: #ffffff !important;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #540c55 !important;
+        }
+
+        .btn-primary {
+            background-color: #540c55;
+            border-color: #540c55;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #540c55;
+            border-color: #540c55;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1561948955-570b270e7e0b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            /* To position the image */
+            display: flex;
+            /* Enable flexbox for content alignment */
+            flex-direction: column;
+            /* Stack text and image vertically */
+            align-items: center;
+            /* Center items horizontally */
+            justify-content: center;
+            /* Center items vertically */
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .hero>.container {
+            position: relative;
+            /* Ensure text stays above the image */
+            z-index: 10;
+            /* Give text a higher stacking order */
+        }
+
+        .hero-image-below-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Make the image full width */
+            height: 100%;
+            /* Make the image full height */
+            object-fit: cover;
+            /* This will make the image cover the entire hero section */
+            opacity: 0.9;
+            /* Adjust opacity as needed */
+            z-index: 1;
+            /* Place the image below the text container */
+        }
+
+        /* Why Adopt Section */
+        .why-adopt {
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .why-adopt h2 {
+            font-size: 2.5rem;
+            color: #540c55;
+            margin-bottom: 30px;
+        }
+
+        .why-adopt-item {
+            margin-bottom: 30px;
+        }
+
+        .why-adopt-item i {
+            font-size: 3rem;
+            color: #540c55;
+            margin-bottom: 15px;
+        }
+
+        .why-adopt-item h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .why-adopt-item p {
+            color: #777;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            background-color: #540c55;
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta .btn-light {
+            background-color: #fff;
+            color: #540c55;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cta .btn-light:hover {
+            background-color: #f0f0f0;
+            color: #540c55;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-paw mr-2"></i>FluffyTails</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary rounded-pill" href="{% url 'register' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary rounded-pill" href="{% url 'login' %}">LogIn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Perfect Furry Friend</h1>
+            <p>Give a loving home to a pet in need.</p>
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg rounded-pill"><i class="fas fa-heart mr-2"></i>Adopt Now !!</a>
+        </div>
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/048/236/265/small_2x/a-dog-and-cat-sleeping-together-on-a-white-background-free-photo.jpg"
+            alt="Cute Dog Lying Down" class="hero-image-below-text">
+    </section>
+
+    <section class="why-adopt py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Why Adopt?</h2>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="why-adopt-item">
+                        <i class="fas fa-heart fa-3x text-danger mb-3"></i>
+                        <h3>Save a Life</h3>
+                        <p>Give a deserving animal a second chance at happiness.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="why-adopt-item">
+                        <i class="fas fa-paw fa-3x text-success mb-3"></i>
+                        <h3>Unconditional Love</h3>
+                        <p>Experience the joy of unwavering companionship.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="why-adopt-item">
+                        <i class="fas fa-home fa-3x text-info mb-3"></i>
+                        <h3>Find Your Perfect Match</h3>
+                        <p>Discover a pet that fits your lifestyle and personality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta py-5">
+        <div class="container text-center">
+            <h2>Ready to Meet Your New Best Friend?</h2>
+            <p class="lead mb-4">Browse our adorable pets and start your adoption journey today!</p>
+        </div>
+    </section>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

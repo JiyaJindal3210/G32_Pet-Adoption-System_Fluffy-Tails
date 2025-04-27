@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %} Learn More {% endblock %}
+
+{% block head %}
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #2a0f50;
+    }
+
+    .header h1 {
+        text-align: left;
+        color: purple;
+        font-weight: bold;
+        margin-left: 60px;
+        padding-top: 20px;
+    }
+
+    main {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        margin-top: 70px;
+    }
+
+    article {
+        width: 70%; 
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    aside {
+        width: 28%; 
+        margin-top: 20px;
+    }
+
+    .match-box,
+    .shelter-box {
+        background: white;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .match-box img,
+    .shelter-box img {
+        border-radius: 10px;
+        width: 100%; /* Make images responsive */
+        height: auto;
+    }
+
+    .main p,
+    ul {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-top: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+        font-weight: 600;
+    }
+
+    a {
+        color: #6a0dad;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 768px) {
+        main {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        article, aside {
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+{% block main_block %}
+
+<main>
+    <article>
+        <p>Dog years are multiplied by seven to get a human age, as a dog's lifespan is a seventh of a person’s.
+            Converting dog years to human years depends on various factors as toy, small, medium, large, and giant dogs
+            mature differently, which is why dogs up to 50 lbs. can live longer than pups up to 100 lbs.</p>
+        <img src="https://www.petfinder.com/static/786d514d93ec19dc783abec09c9670c7/386ce/Dog-years_0.webp">
+        <p>Experts agree, however, that the level of maturity a dog reaches in the first two years is similar to that of
+            a 14-year-old human, but that is where the similarity ends. The age of a pup in dog years to human years
+            depends on the following:</p>
+
+        <ul>
+            <li>Breed</li>
+            <li>Size</li>
+            <li>Weight</li>
+            <li>Activity level</li>
+            <li>Diet</li>
+            <li>Lifestyle</li>
+            <li>Health</li>
+            <li>Lifespan</li>
+        </ul>
+
+        <h2>COMPARING AGE: DOG YEARS VS HUMAN YEARS</h2>
+
+        <p>While most pet parents have been calculating their pup’s dog to human years for the longest time, the method
+            has no basis of truth and human years to dog years conversion is mostly just for entertainment. Just for
+            fun, take a look at the dog years converter and estimate how old the <a href="#">age</a> of a toy, small,
+            medium, large and giant dog breed is in human years.</p>
+        <h2>TOY SIZE DOGS: UP TO 10 LBS.</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Breeds</th>
+                    <th>Dog Age</th>
+                    <th>Human Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#">Chihuahua</a></td>
+                    <td>0-9 mths</td>
+                    <td>Younger than 15</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Japanese Chin</a></td>
+                    <td>10-11 mths</td>
+                    <td>Younger than 15</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Maltese</a></td>
+                    <td>1</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Manchester Terrier</a></td>
+                    <td>2</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Papillion</a></td>
+                    <td>3</td>
+                    <td>28</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Pomeranian</a></td>
+                    <td>4</td>
+                    <td>31</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Toy Fox Terrier</a></td>
+                    <td>5</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Yorkshire Terrier</a></td>
+                    <td>6</td>
+                    <td>38</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>7</td>
+                    <td>42</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>8</td>
+                    <td>45</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Medium Size Dogs: Up to 50 lbs.</h2>
+        <table>
+            <tr>
+                <th>Breeds</th>
+                <th>Dog Age</th>
+                <th>Human Age</th>
+            </tr>
+            <tr>
+                <td><a href="#">Airedale Terrier</a></td>
+                <td>0-9 mths</td>
+                <td>Younger than 15</td>
+            </tr>
+            <tr>
+                <td><a href="#">American Eskimo Dog</a></td>
+                <td>0-9 mths</td>
+                <td>Younger than 15</td>
+            </tr>
+            <tr>
+                <td><a href="#">American Foxhound</a></td>
+                <td>10-11 mths</td>
+                <td>Younger than 15</td>
+            </tr>
+            <tr>
+                <td><a href="#">American Water Spaniel</a></td>
+                <td>10-11 mths</td>
+                <td>Younger than 15</td>
+            </tr>
+            <tr>
+                <td><a href="#">Australian Cattle Dog</a></td>
+                <td>1</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td><a href="#">Basenji</a></td>
+                <td>2</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td><a href="#">Beagle</a></td>
+                <td>3</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td><a href="#">Bearded Collie</a></td>
+                <td>4</td>
+                <td>34</td>
+            </tr>
+            <tr>
+                <td><a href="#">Bedlington Terrier</a></td>
+                <td>5</td>
+                <td>38</td>
+            </tr>
+            <tr>
+                <td><a href="#">Border Collie</a></td>
+                <td>6</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <td><a href="#">Brittany</a></td>
+                <td>7</td>
+                <td>47</td>
+            </tr>
+            <tr>
+                <td><a href="#">Bull Terrier</a></td>
+                <td>8</td>
+                <td>51</td>
+            </tr>
+            <tr>
+                <td><a href="#">Bulldog</a></td>
+                <td>9</td>
+                <td>56</td>
+            </tr>
+            <tr>
+                <td><a href="#">Canaan Dog</a></td>
+                <td>10</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td><a href="#">Cardigan Welsh Corgi</a></td>
+                <td>5</td>
+                <td>38</td>
+            </tr>
+            <tr>
+                <td><a href="#">Chinese Shar-Pei</a></td>
+                <td>6</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <td><a href="#">Dachshund</a></td>
+                <td>7</td>
+                <td>47</td>
+            </tr>
+            <tr>
+                <td><a href="#">English Cocker Spaniel</a></td>
+                <td>8</td>
+                <td>51</td>
+            </tr>
+            <tr>
+                <td><a href="#">English Springer Spaniel</a></td>
+                <td>9</td>
+                <td>56</td>
+            </tr>
+            <tr>
+                <td><a href="#">Field Spaniel</a></td>
+                <td>10</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td><a href="#">Finnish Spitz</a></td>
+                <td>7</td>
+                <td>47</td>
+            </tr>
+            <tr>
+                <td><a href="#">Irish Terrier</a></td>
+                <td>8</td>
+                <td>51</td>
+            </tr>
+            <tr>
+                <td><a href="#">Keeshond</a></td>
+                <td>9</td>
+                <td>56</td>
+            </tr>
+            <tr>
+                <td><a href="#">Kerry Blue Terrier</a></td>
+                <td>10</td>
+                <td>60</td>
+            </tr>
+        </table>
+
+    </article>
+
+    <aside>
+        <div class="match-box">
+            <img src="https://i.pinimg.com/236x/fd/9f/41/fd9f4180ea0f222efd336a4c8affc96e.jpg" height="400px"
+                width="300px">
+        </div>
+        <div class="shelter-box">
+            <img src="{% static 'images/ADS.jpg' %}" height="400px" width="300px">
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <div class="match-box">
+            <img src="https://i.pinimg.com/474x/68/79/25/687925314776cf55ffd56d36d6d36a27.jpg" height="400px"
+                width="300px">
+        </div>
+    </aside>
+
+</main>
+
+
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title_block %}Pets of {{ breed.name }}{% endblock %}
+
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to right, #ffd6e8, #e0f7ff);
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+        margin-top: 180px;
+        color: #ff69b4;
+        text-align: center;
+        font-weight: 700;
+        text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.2);
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    .table {
+        background-color: #fff9f9;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .table thead {
+        background-color: #ff69b4;
+        color: white;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #87cefa;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: 0.3s;
+        display: block;
+        margin: 30px auto;
+    }
+
+    .btn-primary:hover {
+        background-color: #6ab0e6;
+    }
+
+    img {
+        border-radius: 10px;
+        height: 60px;
+        object-fit: cover;
+    }
+
+    p.text-center {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 40px;
+    }
+
+    body::before {
+        content: "";
+        background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
+        opacity: 0.04;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+</style>
+{% endblock %}
+
+{% block main_block %}
+<h3 class="text-center">Pets Belonging to {{ breed.name }}</h3>
+
+<div class="container">
+    {% if pets %}
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Pet ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Breed(s)</th>
+                <th>Image</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pet in pets %}
+            <tr>
+                <td>{{ pet.pet_id }}</td>
+                <td>{{ pet.name }}</td>
+                <td>{{ pet.gender }}</td>
+                <td>{{ pet.age|default:"N/A" }}</td>
+                <td>
+                    {% for breed in pet.breeds.all %}
+                        {{ breed.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        N/A
+                    {% endfor %}
+                </td>
+                <td>
+                    {% if pet.image %}
+                        <img src="{{ pet.image }}" alt="{{ pet.name }}">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+                <td>{% if pet.is_available %}Available{% else %}Adopted{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">No pets of this breed available yet.</p>
+    {% endif %}
+
+    <a href="{% url 'addbreed' %}" class="btn btn-primary">Back to Breeds</a>
+</div>
+{% endblock %}

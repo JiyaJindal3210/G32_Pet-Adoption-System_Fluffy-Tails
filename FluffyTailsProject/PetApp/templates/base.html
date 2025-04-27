@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title_block %}FluffyTails{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'images/image.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <style>
+        .navbar6 {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: #B55BA4;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            padding: 0 20px;
+        }
+
+        .logo6 img {
+            margin-left: -50px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .box6 a {
+            color: #6a0dad;
+        }
+
+        .box6 a:hover {
+            font-size: larger;
+        }
+
+        .allAbout,
+        .ContactUs,
+        .AboutUs,
+        .login,
+        .register,.Dashboard6,.Contact6, .logout6, .cart6,.pet6,.addpet6,.admin, .home6 , .orders6{
+            border: none;
+            outline: none;
+            padding: 6px;
+            border-radius: 40px;
+            width: 120px;
+            text-align: center;
+            background-color: #E5C0D1;
+            color: purple;
+            font-size: medium;
+            font-weight: bolder;
+            text-decoration: none;
+            cursor: pointer;
+            transition: font-size 0.3s;
+        }
+
+
+        .allAbout a,
+        .ContactUs a,
+        .AboutUs a,
+        .login a,
+        .register a,.Contact6 a, .Dashboard6 a, .logout6 a, .cart6 a,.pet6 a,.addpet6 a,.admin a, .home6 a , .orders6 a{
+            color: #911693;
+            text-decoration: none;
+        }
+
+        .allAbout:hover,
+        .ContactUs:hover,
+        .AboutUs:hover,
+        .login:hover,
+        .register:hover,.Contact6:hover, .Dashboard6:hover, .logout6:hover, .cart6:hover,.pet6:hover,.addpet6:hover,.admin:hover, .home6:hover , .orders6:hover {
+            font-size: large;
+        }
+
+        .logo6 img {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .logo6 img {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .dropdown-container {
+            position: relative;
+            display: flex;
+            /* justify-content: flex-start; */
+        }
+
+        .dropdown-container .dropdown-menu {
+            position: fixed;
+        }
+
+        #dropdown-toggle {
+            display: none;
+        }
+
+        .dropdown-label {
+            cursor: pointer;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #911693;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+            border: 1px solid #911693;
+        }
+
+        .dropdown-label:hover {
+            background-color: #E5C0D1;
+        }
+
+        .dropdown-menu {
+            display: none;
+            /* position: fixed; */
+            top: 100px;
+            /* Directly below navbar */
+            left: 0;
+            width: 100vw;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #dropdown-toggle:checked~.dropdown-menu,
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            display: flex;
+        }
+
+        .option {
+            flex: 1;
+            margin-left: 10px;
+            text-align: center;
+            padding: 20px;
+            background: #3E043B;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 16px;
+            border-right: 1px solid #5c0d8a;
+        }
+
+        .option:last-child {
+            border-right: none;
+        }
+
+        .option:hover {
+            background: #911693;
+            color: white;
+        }
+
+        .sub-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 30%;
+            background: #6a0dad;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 10px;
+            min-width: 150px;
+            /* z-index: 1000; */
+        }
+
+        .option:hover .sub-dropdown {
+            display: block;
+        }
+
+        .sub-option {
+            padding: 10px;
+            background: #6a0dad;
+            color: pink;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .sub-option a {
+            text-decoration: none;
+            color: pink;
+        }
+
+        .sub-option:last-child {
+            border-bottom: none;
+        }
+
+        .sub-option:hover {
+            background: #3E043B;
+            color: pink;
+        }
+
+        .option {
+            position: relative;
+        }
+
+
+        main {
+            /* background-color: #800080; */
+            padding: 2rem 1rem;
+            min-height: 80vh;
+        }
+
+        .footer {
+            background-color: #5c0d8a;
+            color: rgb(87, 21, 125);
+            padding: 20px;
+            bottom: 0px;
+            font-family: Arial, sans-serif;
+           
+
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: red;
+            padding: 5px;
+            margin-top: 150px;
+        }
+
+        .top-bar img {
+            height: 45px;
+            margin-right: 10px;
+            width: 70px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        footer p {
+            text-align: center;
+            color: #310e39;
+            font-weight: bolder;
+        }
+
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #954bfc;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #310e39;
+            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: bolder;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+            font-size: large;
+        }
+
+
+        .signup-btn {
+            background-color: #5c0d8a;
+            color: rgb(62, 11, 68);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .signup-btn:hover {
+            background-color: #4a0a6e;
+        }
+
+        .bottom-bar {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgb(61, 19, 69);
+
+        }
+
+        .bottom-bar p {
+            font-weight: bold;
+            color: #310e39;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+
+        }
+
+        p {
+            color: black;
+        }
+
+        .social-icons a {
+            color: black;
+            margin: 10px;
+        }
+
+        .social-icons a:hover {
+            font-size: larger;
+        }
+
+        .navbar-section {
+            background-color: #4b014b;
+            padding: 1rem 0;
+            text-align: center;
+            margin-top: 100px;  /* Add this line to push navbar-section below the fixed top navbar */
+        }
+
+        .navbar-section a {
+            color: white;
+            text-decoration: none;
+            margin: 0 35px;
+            padding: 8px 20px;
+            background-color: #8e24aa;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .navbar-section a:hover {
+            background-color: #ba68c8;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+    {% block head %} {% endblock %}
+</head>
+<body>
+
+    <header class="navbar6">
+        <div class="logo6">
+            <img src="{% static 'images/image.png' %}" alt="Feelzy-Music">
+        </div>
+        
+        
+        
+
+
+    {% if user.is_authenticated and user.is_superuser %}
+
+
+    <div class="Dashboard6">
+        <a href="{% url 'view_profile_admin' %}">Profile</a>
+    </div>
+
+    <div class="Contact6">
+        <a href="{% url 'view_messages' %}">Messages</a>
+    </div>
+    
+
+    <div class="admin">
+        <a href="/admin/">Admin</a>
+    </div>
+
+    
+    
+    <div class="logout6">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    {% elif user.is_authenticated and not user.is_superuser %}
+
+    <div class="box6">
+        <a href="#J1">
+            <a href="{% url 'index' %}"><i class="fa-solid fa-house fa-2xl"></i></a>
+        </a>
+
+    </div>
+
+    <div class="ContactUs">
+        <a href="{% url 'contactus' %}">Contact Us</a>
+    </div>
+    <div class="AboutUs">
+        <a href="{% url 'aboutus' %}">About Us</a>
+    </div>
+
+    <div class="orders6">
+        <a href="{% url 'orders' %}">Orders</a>
+    </div>    
+
+    <div class="Dashboard6">
+        <a href="{% url 'view_profile' %}">Profile</a>
+    </div>
+
+    <div class="cart6">
+        <a href="{% url 'view_cart' %}">Cart</a>
+    </div>
+
+
+    <div class="logout6">
+        <a href="{% url 'logout' %}">  Logout</a>
+    </div>
+
+    <div class="dropdown-container">
+            <!-- <div class="allAbout">
+                <a href="#">All About Animals</a>
+            </div>
+            <label for="dropdown-toggle" class="dropdown-label">▼</label> -->
+            <input type="checkbox" id="dropdown-toggle">
+            <div class="dropdown-menu">
+                <div class="option">ADOPT OR GET INVOLVED
+                    <div class="sub-dropdown">
+                        <div class="sub-option">
+                            <a href="{% url 'aboutus2' %}">ABOUT FLUFFY TAILS</a>
+                        </div>
+                        <div class="sub-option">
+                            <a href="{% url 'adoptingpets' %}">ADOPTING PETS</a>
+                        </div>
+                        <div class="sub-option">
+                            <a href="{% url 'foundation' %}">FLUFFY TAILS FOUNDATION</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="option">DOGS & PUPPIES
+                    <div class="sub-dropdown">
+                        <div class="sub-option">
+                            <a href="{% url 'dogPuppiesAdoption' %}">DOG ADOPTION</a>
+                        </div>
+                        <div class="sub-option">
+                            <a href="{% url 'dogs' %}">DOG BREEDS</a>
+                        </div>
+                        <div class="sub-option">
+                            <a href="{% url 'behaviordog' %}">DOG BEHAVIOR</a>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="option">CATS & KITTENS
+                    <div class="sub-dropdown">
+                        <div class="sub-option">
+                            <a href="{% url 'catKittenAdoption' %}">CAT ADOPTION</a>
+                        </div>
+                        <div class="sub-option">
+                            <a href="{% url 'cats' %}">CAT BREEDS</a>
+                        </div>
+                        <div class="sub-option">
+                            <a href="{% url 'behaviorcat' %}">CAT BEHAVIOR</a>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+
+
+
+
+
+    {% else %}
+
+    <div class="ContactUs">
+        <a href="{% url 'contactus' %}">Contact Us</a>
+    </div>
+    <div class="AboutUs">
+        <a href="{% url 'aboutus' %}">About Us</a>
+    </div>
+
+    <div class="register">
+        <a href="{% url 'register' %}">Register</a>
+    </div>
+
+    <div class="login">
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+
+    {% endif %}
+
+    </header>
+
+    <div class="navbar-section">
+        {% if user.is_authenticated and user.is_superuser %}
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'addbreed' %}">Add Breed</a>
+        <a href="{% url 'registerpet' %}">Register Pet</a>
+        <a href="{% url 'orders' %}">Orders</a>
+        {% endif %}
+    </div>
+
+
+    <main class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+
+        {% block main_block %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="top-bar">
+            <img src="{% static 'images/image.png' %}" alt="Fluffy Tails">
+            <span>Your Pet, Our Passion.™</span>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>RESOURCES</h3>
+                <a href="{% url 'contactus' %}">FAQs</a>
+                <a href="#">Mobile App Download</a>
+                <a href="#">Partnerships</a>
+                <a href="{% url 'foundation' %}">News Center</a>
+                <a href="#">Put Fluffy Tails On Your Site</a>
+                <a href="#">For Developers</a>
+                <a href="{% url 'contactus' %}">Contact Us</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>ADOPT OR GET INVOLVED</h3>
+                <a href="#">All Adopt or Get Involved</a>
+                <a href="{% url 'adoptingpets' %}">Adopting Pets</a>
+                <a href="#">Animal Shelters & Rescues</a>
+                <a href="#">Other Types of Pets</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>ABOUT DOGS & PUPPIES</h3>
+                <a href="#">All About Dogs & Puppies</a>
+                <a href="{% url 'dogPuppiesAdoption' %}">Dog Adoption</a>
+                <a href="{% url 'dogs' %}">Dog Breeds</a>
+                <a href="#">Feeding Your Dog</a>
+                <a href="{% url 'behaviordog' %}">Dog Behavior</a>
+                
+            </div>
+
+            <div class="footer-column">
+                <h3>ABOUT CATS & KITTENS</h3>
+                <a href="#">All About Cats & Kittens</a>
+                <a href="{% url 'catKittenAdoption' %}">Cat Adoption</a>
+                <a href="{% url 'cats' %}">Cat Breeds</a>
+                <a href="#">Feeding Your Cat</a>
+                <a href="{% url 'behaviorcat' %}">Cat Behavior</a>
+                
+            </div>
+
+            
+        </div>
+
+        <br><br>
+
+        <p>Shelter & Rescue Registration | Sitemap | Terms of Service | Notice at Collection | Privacy Policy
+            (updated) | Accessibility | Cookie Policy | Your Privacy Choices</p>
+
+        <br>
+
+        <div class="bottom-bar">
+            <p>©2025 FluffyTails.com. All trademarks are owned by Société des Produits Nestlé S.A., or used with
+                permission.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                <a href="https://x.com/"><i class="fa-brands fa-twitter fa-2xl"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube fa-2xl"></i></a>
+                <a href="https://in.pinterest.com/"><i class="fa-brands fa-pinterest fa-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/00743eceec.js" crossorigin="anonymous"></script>
+
+    {% block script %}
+
+    {% endblock %}
+</body>
+</html>

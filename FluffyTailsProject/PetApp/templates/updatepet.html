@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title_block %} Update {{ breed.name }} {% endblock %}
+
+{% block main_block %}
+<h3 class="text-center">Update Breed Details</h3>
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Breed Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Breed Name:</label>
+            <input type="text" id="name" name="name" value="{{ breed.name }}" required class="form-control">
+        </div>
+
+        <!-- Species Name (no dropdown) -->
+        <div class="mb-3">
+            <label for="species_name" class="form-label">Species:</label>
+            <input type="text" id="species_name" name="species_name" value="{{ breed.species.name }}" required class="form-control">
+        </div>
+
+        <input type="submit" value="Update Breed" class="btn btn-primary">
+        <a href="{% url 'addbreed' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

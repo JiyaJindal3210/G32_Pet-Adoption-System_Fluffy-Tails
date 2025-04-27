@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block title_block %} Cat's Behavior {% endblock %}
+
+{% block head %}
+<style>
+    •⁠  ⁠{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color:#3e0950;
+        color: white;
+       
+    }
+
+    h1,
+    h2 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Header Section */
+    .k2 {
+        margin: auto;
+        margin-top: 100px;
+        background-color: rgb(221, 130, 218);
+        color: white;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .k2 h1 {
+        font-size: 3rem;
+    }
+
+    /* Main Content Section */
+    .container {
+        margin-top: 80px;
+    }
+
+    .content-section {
+        margin-bottom: 40px;
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .image-section {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .image-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Checklist Styles */
+    ul.checklist {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    ul.checklist li {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 25px;
+    }
+
+    ul.checklist li::before {
+        content: "*";
+        color: #007bff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.5rem;
+    }
+
+
+    /* Custom Button Styles */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+{% endblock %}
+
+
+
+
+
+
+{% block main_block %}
+
+<!-- Header Section -->
+<header class="k2">
+    <h1>Get to know your Cat's Behavior</h1>
+    <p>"You’re not just a cat, you’re a friend, a family member, and a source of endless joy."</p>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+
+
+    <!-- Preparing Your Home Section -->
+    <section class="content-section">
+        <h2>Purring</h2>
+
+        <ul>
+            <li>When it happens: Purring is often associated with contentment. Cats typically purr when they’re
+                being petted, cuddled, or even when they’re relaxing in a peaceful environment.</li>
+
+            <li>Why it happens: Purring is also used by cats to comfort themselves when they're in pain or feeling
+                anxious, so it doesn’t always mean they’re happy.</li>
+        </ul>
+    </section>
+
+
+    <section class="content-section">
+        <h2>Meowing</h2>
+        <ul>
+            <li>
+                When it happens: Cats meow to communicate with humans.</li>
+            <li>
+                Why it happens: Unlike some animals, cats don’t meow to communicate with each other as much, but
+                they do it with people. They may meow for food, attention, or to greet you. Some cats are more vocal
+                than others, and the type of meow can signal different things (hunger, discomfort, or excitement).
+
+            </li>
+        </ul>
+
+    </section>
+
+    <!-- Image Section -->
+    <section class="image-section">
+        <img src="https://www.shutterstock.com/image-vector/pets-adoption-friendship-between-cats-260nw-2397643169.jpg"
+            alt="Adoption Preparation">
+    </section>
+
+    <!-- Adoption Checklist Section -->
+    <section class="content-section">
+        <h2>Hiding or Seeking Solitude</h2>
+        <ul>
+            <li>When it happens: Cats may retreat to a quiet place or hide under furniture, especially if they’re
+                feeling stressed or unwell.</li>
+            <li>Why it happens: Cats are creatures of habit, and they seek out safe, secure spaces to rest or escape
+                from anything that might be causing anxiety. It’s their way of protecting themselves.</li>
+        </ul>
+    </section>
+
+    <!-- Adopting Pets with Special Needs Section -->
+    <section class="content-section">
+        <h2>Biting or Scratching in Play</h2>
+        <ul>
+            <li>
+                When it happens: Cats sometimes engage in rough play, involving gentle biting or scratching.</li>
+            <li>Why it happens: Playful biting or scratching is often a way for kittens to learn hunting skills, but
+                adult cats can also engage in this behavior. If it’s too rough, it’s important to redirect them to
+                appropriate toys.
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="content-section">
+        <h2> Slow Blinking</h2>
+        <ul>
+            <li>When it happens: Cats blink slowly at you, often while they’re calm and relaxed.</li>
+            <li>Why it happens: This slow blinking is a sign of trust and affection. It's often called a "cat kiss,"
+                and cats do it when they feel safe and loved. You can return the gesture by blinking slowly at your
+                cat.</li>
+        </ul>
+
+    </section>
+
+    <!-- Next Steps Section -->
+    <section class="content-section">
+        <h2>Chasing Shadows or Lights</h2>
+        <ul>
+            <li>When it happens: Cats are often fascinated by moving shadows, lights, or reflections.</li>
+            <li>
+                Why it happens: This behavior is tied to their predatory instincts. They see these movements as a
+                potential target to chase, even though they’re not real prey.
+            </li>
+        </ul>
+    </section>
+
+    <section class="content-section">
+        <h2> Pacing or Restlessness</h2>
+        <ul>
+            <li>When it happens: Cats may pace around, meow, or show restlessness.</li>
+            <li>Why it happens: This could indicate hunger, a desire for attention, or anxiety. Cats can also become
+                restless if they feel bored or overstimulated.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="content-section">
+        <h2>Following You Around</h2>
+        <ul>
+            <li>When it happens: Cats may follow you from room to room or sit near you.</li>
+            <li>Why it happens: This is often a sign of affection, as cats enjoy being close to their humans. They
+                may also follow you because they’re curious about what you’re doing or hoping for a treat or
+                attention.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- Image Section -->
+    <section class="image-section">
+        <img src="https://images.contentstack.io/v3/assets/blt6f84e20c72a89efa/blt1473f8fa02cf305c/6261d1c93348304067e0dc0e/img-requirements-to-adopt-a-pet.jpg"
+            alt="Pet Adoption Success">
+    </section>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title_block %} Adopting Pets {% endblock %}
+
+{% block head %}
+<style>
+    .logo6 img {
+        height: 80px;
+        width: 130px;
+        border-radius: 50%;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(247, 239, 239);
+        text-align: center;
+        background-color: #3e0950;
+        color: white;
+
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+        padding: 50px 0;
+        margin-top: 30px;
+    }
+
+    h1 {
+        color: white;
+        font-size: 36px;
+        text-align: left;
+    }
+
+    p {
+        color: #333;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+
+    .cta-btn {
+        display: inline-block;
+        background-color: #6a0dad;
+        color: #fff;
+        padding: 12px 24px;
+        font-size: 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+
+    .cta-btn:hover {
+        background-color: #4a087b;
+    }
+
+    .image-container {
+        margin-left: 0%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0%;
+    }
+
+
+
+    img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .features {
+        background-color: white;
+        padding: 30px;
+        margin: 2px auto;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        transition: transform 0.3s ease;
+        margin-left: 0;
+        font-style: italic;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .features p {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .features:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 15px gray;
+    }
+
+    .p2 img {
+        max-width: 100%;
+        height: 300px;
+        width: 250px;
+
+
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+        background-color: #6a0dad;
+        color: #f8f9fa;
+    }
+
+    .card:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 15px gray;
+    }
+
+    .i {
+        font-size: xx-large;
+        text-align: left;
+        color: white;
+        font-style: italic;
+
+    }
+
+    .i:hover {
+        text-decoration: underline;
+        font-size: 35px;
+
+    }
+</style>
+{% endblock %}
+
+
+
+
+
+
+{% block main_block %}
+
+
+<div class="container">
+    <h1>Adopting Pets</h1>
+    <div class="features">
+        <p>Ready to welcome a new furry friend into your home? Adopting a pet is a wonderful way to bring love, joy,
+            and companionship into your life, but it’s also a big responsibility. Every pet has unique needs, and
+            finding the right match can make all the difference in ensuring a happy and fulfilling relationship.
+            Not sure where to start? Our comprehensive articles on pet adoption will guide you through every step of
+            the process. Whether you're considering a playful puppy, a cuddly kitten, or a gentle senior pet, we
+            provide expert tips on selecting the perfect breed or species to fit your lifestyle.
+
+            Beyond choosing the right pet, you'll also find valuable advice on preparing your home, understanding
+            adoption fees, and easing the transition for your new companion. We also cover essential topics such as
+            training, nutrition, and veterinary care to help you build a strong bond with your pet from day one.</p>
+
+
+        <div class="p2">
+            <img src="https://i.pinimg.com/236x/da/f5/be/daf5bed3456d9671367a92331d7925fd.jpg">
+        </div>
+    </div>
+    <br><br><br>
+    <div class="image-container">
+        <img src="https://i.pinimg.com/236x/22/f4/35/22f435aed805c8b062d8d4b20d5b3a23.jpg" height="200px" width="650px">
+        <img src="https://i.pinimg.com/236x/d2/7f/5b/d27f5b8813b9a38e76a0502920b3ec72.jpg" height="200px" width="450px">
+    </div>
+    <br><br><br>
+    <div class="i"><B>PETS AVAILABLE FOR ADOPTION NEARBY</B></h2>
+    </div>
+    <br><br>
+
+    <div class="image-container">
+        <div class="card" style="width: 18rem;">
+            <img src="https://th.bing.com/th/id/OIP.AZ0n8dOflsRlcXbJUhuReAHaF_?w=214&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                class="card-img-top" alt="..." height="250px">
+            <div class="card-body">
+                <h3 class="card-title">Adopt Me</h3>
+                <h class="card-text">TUFFY</p>
+
+            </div>
+        </div>
+        <div class="card" style="width: 20rem;">
+            <img src="https://th.bing.com/th/id/OIP.F9kz6JahRU02L8BevLVHZAHaFj?w=245&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                class="card-img-top" alt="..." height="250px">
+            <div class="card-body">
+                <h3 class="card-title">Adopt Me</h3>
+                <h class="card-text">FURRY</p>
+
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://th.bing.com/th/id/OIP.KzZMSgHPC2Tx6zLLPR7UYgHaEK?w=285&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                class="card-img-top" alt="..." height="250px">
+            <div class="card-body">
+                <h3 class="card-title">Adopt Me</h3>
+                <h class="card-text">TOMMY</p>
+
+            </div>
+
+        </div>
+    </div>
+    <br><br><br>
+    <div class="i"><b>
+            <h3>HOW TO ADOPT A PET?
+        </b></h3>
+    </div>
+
+    <div class="image-container">
+        <div class="card" style="width: 18rem;">
+            <img src="https://th.bing.com/th/id/OIP.eMq6Bic6IlPjIm4y3vEbAAHaEO?w=288&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                class="card-img-top" alt="..." height="250px">
+            <div class="card-body">
+                <h3 class="card-title">How To Adopt Me?</h3>
+                <h class="card-text">How long will it tale after i submit an adoption inquiry?</p>
+
+            </div>
+        </div>
+        <div class="card" style="width: 20rem;">
+            <img src="https://th.bing.com/th/id/R.e38767b2d4005b865e1854c265e9ab7e?rik=26FggQ9EhPrG7Q&riu=http%3a%2f%2fwww.baltana.com%2ffiles%2fwallpapers-2%2fCute-Cat-Images-07756.jpg&ehk=BwZvi%2fA6o4aHac3M%2f%2bTD36S9IrJ6kmWhXYOsPzuV%2bzc%3d&risl=&pid=ImgRaw&r=0"
+                class="card-img-top" alt="..." height="250px">
+            <div class="card-body">
+                <h3 class="card-title"> How To Adopt Me?</h3>
+                <h class="card-text">How to adopt dogs and cat during COVID 19 pandemic?</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://th.bing.com/th/id/OIP._Q4NWDNTkevi__PItcB3cQHaE6?w=266&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7
+                class=" card-img-top" alt="..." height="250px">
+            <div class="card-body">
+                <h3 class="card-title">How To Adopt Me?</h3>
+                <h class="card-text">Is the pet i see on petfinder still adoptable?</p>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endblock %}

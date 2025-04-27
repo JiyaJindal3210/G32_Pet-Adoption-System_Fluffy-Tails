@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title_block %} Messages {% endblock %}
+{% block head %}
+<style>
+    body {
+        background-color: #fdf6f0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+
+    h2 {
+        color: #8e44ad;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 30px;
+        font-family: 'Georgia', serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: #9b59b6;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    td {
+        padding: 12px;
+        vertical-align: top;
+        background-color: #fefefe;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f3fc;
+    }
+
+    p {
+        text-align: center;
+        font-style: italic;
+        color: #6c757d;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>All Contact Messages</h2>
+
+    {% if all_messages %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Sent At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in all_messages %}
+            <tr>
+                <td>{{ message.name }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.sent_at|date:"M d, Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No messages available.</p>
+    {% endif %}
+</div>
+{% endblock %}

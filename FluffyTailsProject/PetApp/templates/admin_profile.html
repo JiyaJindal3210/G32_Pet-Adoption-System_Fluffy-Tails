@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title_block %} Profile Page {% endblock %}
+
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h2 {
+        color: #ff69b4;
+        font-weight: 700;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        font-size: 2.5rem;
+        margin-top: 280px;
+        text-align: center;
+    }
+
+    .profile-card {
+        background-color: #fff8f0;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .profile-card h1 {
+        color: #ff6f91;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .profile-card p {
+        font-size: 1.1rem;
+        color: #4b4b4b;
+        margin-bottom: 10px;
+    }
+
+    .btn-secondary {
+        background-color: #fcb045;
+        border: none;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: white;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+        background-color: #f7971e;
+        color: white;
+    }
+
+    body::before {
+        content: "";
+        background: url("https://cdn-icons-png.flaticon.com/512/616/616408.png") repeat;
+        opacity: 0.04;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+</style>
+{% endblock %}
+
+{% block main_block %}
+<h2>Admin Profile</h2>
+
+<div class="profile-card">
+    <h1>Welcome, Admin </h1>
+    <p><strong>Name:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}

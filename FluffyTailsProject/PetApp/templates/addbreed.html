@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title_block %} Add Breed {% endblock %}
+
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to right, #ffd6e8, #e0f7ff);
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+        margin-top: 20px;
+        color: #ff69b4;
+        text-align: center;
+        font-weight: 700;
+        text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.2);
+    }
+
+    form {
+        background-color: #fff9f9;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+        margin-top: 20px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    label {
+        font-weight: 600;
+        color: #ff69b4;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #ffc0cb;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-success {
+        background-color: #ff69b4;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: 0.3s;
+    }
+
+    .btn-success:hover {
+        background-color: #ff4081;
+    }
+
+    hr {
+        border: none;
+        height: 3px;
+        background: #ffb6c1;
+        width: 100px;
+        margin: 40px auto;
+        border-radius: 10px;
+    }
+
+    .table-dark {
+        background-color: #ffeef8;
+        color: #333;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(255, 182, 193, 0.3);
+    }
+
+    .table-dark th {
+        background-color: #ff69b4;
+        color: white;
+    }
+
+    .table-dark td, .table-dark th {
+        padding: 16px;
+        vertical-align: middle;
+    }
+
+    .btn {
+        border-radius: 10px;
+        font-weight: 500;
+    }
+
+    .btn-primary {
+        background-color: #87cefa;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #6ab0e6;
+    }
+
+    .btn-danger {
+        background-color: #ff6f61;
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #e0554a;
+    }
+
+    .btn-warning {
+        background-color: #ffe066;
+        color: #444;
+        border: none;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffd633;
+    }
+
+    /* Optional paw print background */
+    body::before {
+        content: "";
+        background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
+        opacity: 0.04;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+</style>
+{% endblock %}
+
+{% block main_block %}
+
+<h3 class="text-center" style="margin-top: 250px;">New Breed Addition Screen</h3>
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Breed Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Enter Breed Name:</label>
+            <input type="text" id="name" name="name" required class="form-control">
+        </div>
+
+        <!-- Species Name Input -->
+        <div class="mb-3">
+            <label for="species_name" class="form-label">Enter Species Name:</label>
+            <input type="text" id="species_name" name="species_name" required class="form-control">
+        </div>
+
+        <input type="submit" value="Add Breed" class="btn btn-success">
+    </form>
+</div>
+
+<hr>
+
+{% if breeds %}
+<div class="container">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Breed ID</th>
+                <th>Breed Name</th>
+                <th>Species</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for breed in breeds %}
+            <tr>
+                <td>{{ breed.id }}</td> <!-- Corrected to use breed.id -->
+                <td>{{ breed.name }}</td>
+                <td>{{ breed.species.name }}</td> <!-- Corrected to access species name -->
+                <td>
+                    <!-- Ensure the correct breed.id is passed -->
+                    <a href="{% url 'update_breed' breed_id=breed.id %}" class="btn btn-primary">UPDATE</a>
+                    <a href="{% url 'delete_breed' breed_id=breed.id %}" class="btn btn-danger">DELETE</a>
+                    <a href="{% url 'breed_pet_list' breed_id=breed.id %}" class="btn btn-warning">PET LIST</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% endblock %}

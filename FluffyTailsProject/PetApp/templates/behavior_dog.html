@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title_block %} Dog's Behavior {% endblock %}
+
+{% block head %}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color:#3e0950;
+        color: white;
+    }
+
+    h1,
+    h2 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+       
+    }
+
+    .k1 {
+        margin: auto;
+        background-color: rgb(221, 130, 218);
+        color: white;
+        text-align: center;
+        padding: 50px 0;
+        margin-top: 100px;
+    }
+
+    .k1 h1 {
+        font-size: 3rem;
+    }
+
+    .container {
+        margin-top: 80px;
+    }
+
+    .content-section {
+        margin-bottom: 40px;
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: aliceblue;
+    }
+
+    .image-section {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .image-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+  
+
+    ul.checklist {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    ul.checklist li {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 25px;
+    }
+
+    ul.checklist li::before {
+        content: "*";
+        color: #007bff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.5rem;
+    }
+
+
+    /* Custom Button Styles */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block main_block %}
+
+    <!-- Header Section -->
+    <header class="k1">
+        <h1>Get to know your Dog's Behavior</h1>
+        <p>"A dog doesn’t care if you’re having a bad day; all they know is they want to make it better."</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+
+        <!-- Preparing Your Home Section -->
+        <section class="content-section">
+            <h2>Social Behavior</h2>
+
+            <ul>
+                <li>Pack Mentality: Dogs are pack animals by nature, and they generally enjoy the company of other dogs
+                    and
+                    humans. They often look for leadership and structure, which is why it's important for owners to set
+                    clear
+                    boundaries and rules.</li>
+                <li>Affection: Dogs can be incredibly affectionate and will seek out human contact for petting,
+                    cuddling,
+                    and companionship. Many dogs will show affection by wagging their tails, licking their owner's face,
+                    or
+                    cuddling up next to them.</li>
+                <li>Separation Anxiety: Dogs can become very attached to their owners, and some may experience
+                    separation
+                    anxiety when left alone. This can lead to destructive behaviors like chewing, excessive barking, or
+                    inappropriate elimination.</li>
+            </ul>
+        </section>
+
+
+        <section class="content-section">
+            <h2>Stress and Fear-Based Behavior</h2>
+            <ul>
+                <li>Fear of Loud Noises: Many dogs are afraid of loud noises like thunderstorms, fireworks, or even
+                    vacuum cleaners. They might hide, cower, or become agitated when exposed to these stimuli.</li>
+
+                <li>Avoidance Behavior: When a dog feels threatened or stressed, it may exhibit avoidance behavior, like
+                    backing away, hiding, or attempting to escape the situation. Understanding these signals helps to
+                    prevent further stress.</li>
+                <li>Aggression: Aggression can occur in response to fear, territoriality, or frustration. Aggressive
+                    dogs may display growling, baring teeth, or lunging. It’s essential to understand the cause of
+                    aggression and address it with the help of a professional dog trainer or behaviorist if necessary.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Image Section -->
+        <section class="image-section">
+            <img src="https://www.shutterstock.com/image-vector/pets-adoption-friendship-between-cats-260nw-2397643169.jpg"
+                alt="Adoption Preparation">
+        </section>
+
+        <!-- Adoption Checklist Section -->
+        <section class="content-section">
+            <h2>Communication</h2>
+            <ul>
+                <li>Barking: Barking is one of the most common ways dogs communicate. They bark to express excitement,
+                    alert
+                    their owners to something happening, or when they are anxious. Understanding the context of barking
+                    can help
+                    determine the cause.</li>
+                <li>Tail Wagging: A wagging tail generally signifies excitement or happiness, but the speed and manner
+                    of
+                    the wag can indicate different emotions. A fast wagging tail with stiff posture might signal
+                    agitation,
+                    while a relaxed, slow wag suggests contentment.</li>
+                <li>Whining and Whimpering: Dogs may whine or whimper when they are anxious, uncomfortable, or want
+                    attention. This can also be a sign that a dog needs something, such as food, water, or to go
+                    outside.</li>
+            </ul>
+        </section>
+
+        <!-- Adopting Pets with Special Needs Section -->
+        <section class="content-section">
+            <h2>Play Behavior</h2>
+            <ul>
+                <li>Play Bow: One of the most common play behaviors is the "play bow," where the dog lowers its front
+                    end while
+                    keeping its rear end up. This behavior is a signal that the dog wants to play.</li>
+                <li>Chasing: Many dogs have a strong prey drive and will enjoy activities like chasing balls, frisbees,
+                    or
+                    even small animals. It’s important to provide them with outlets for this natural behavior.</li>
+                <li>Chewing: Chewing is a natural and important behavior for dogs. Puppies chew to relieve the
+                    discomfort of
+                    teething, while adult dogs may chew to relieve boredom, stress, or anxiety. Providing proper chew
+                    toys helps
+                    prevent destructive behavior.</li>
+            </ul>
+
+        </section>
+
+        <section class="content-section">
+            <h2>Health-Related Behavior</h2>
+            <ul>
+                <li>Lethargy or Decreased Activity: A sudden decrease in activity or interest in food and play can be a
+                    sign that something is wrong. It’s essential to monitor your dog’s behavior and seek veterinary
+                    advice if any changes in energy or appetite occur.</li>
+                <li>Excessive Scratching or Grooming: If a dog is scratching excessively or licking a certain area, it
+                    could indicate allergies, fleas, or other skin issues. It's essential to address any health concerns
+                    that might be causing discomfort.</li>
+            </ul>
+
+        </section>
+
+        <!-- Next Steps Section -->
+        <section class="content-section">
+            <h2>Training and Learning Behavior</h2>
+            <ul>
+                <li> Obedience: With proper training, dogs can learn to follow commands like "sit," "stay," "come," and
+                    "heel."
+                    Positive reinforcement methods (treats, praise) are effective for encouraging desired behaviors.
+                </li>
+                <li>Puppy Behavior: Puppies are curious and tend to explore everything. They can be a bit more
+                    energetic,
+                    and housetraining is an important part of puppy development. Patience is key when training a puppy.
+                </li>
+                <li>Learning by Association: Dogs are able to learn by association, meaning they can connect specific
+                    actions with rewards or consequences. This principle is the foundation of many training techniques,
+                    like
+                    crate training or teaching commands.</li>
+        </section>
+
+        <!-- Image Section -->
+        <section class="image-section">
+            <img src="https://images.contentstack.io/v3/assets/blt6f84e20c72a89efa/blt1473f8fa02cf305c/6261d1c93348304067e0dc0e/img-requirements-to-adopt-a-pet.jpg"
+                alt="Pet Adoption Success">
+        </section>
+    </div>
+
+
+    {% endblock %}

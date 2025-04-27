@@ -1,0 +1,671 @@
+{% extends "base.html" %}
+
+{% block title_block %} Cats & Kittens Adoption {% endblock %}
+
+
+{% block head %}
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+
+    .navbar {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #B55BA4;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100000;
+        padding: 0 20px;
+    }
+
+    .logo img {
+        margin-right: 50px;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+
+    .box a {
+        color: #6a0dad;
+    }
+
+    .box a:hover {
+        font-size: larger;
+    }
+
+    .allAbout,
+    .ContactUs,
+    .AboutUs,
+    .login,
+    .signup {
+        border: none;
+        outline: none;
+        padding: 6px;
+        border-radius: 40px;
+        width: 120px;
+        text-align: center;
+        background-color: #E5C0D1;
+        color: purple;
+        font-size: medium;
+        font-weight: bolder;
+        text-decoration: none;
+        cursor: pointer;
+        transition: font-size 0.3s;
+    }
+
+
+    .allAbout a,
+    .ContactUs a,
+    .AboutUs a,
+    .login a,
+    .signup a {
+        color: #911693;
+        text-decoration: none;
+    }
+
+    .allAbout:hover,
+    .ContactUs:hover,
+    .AboutUs:hover,
+    .login:hover,
+    .signup:hover {
+        font-size: large;
+    }
+
+    .logo img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+        background-color:#3e0950;
+        color: white;
+    }
+
+    .logo img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+
+    .dropdown-container {
+        position: relative;
+        display: flex;
+        /* justify-content: flex-start; */
+    }
+
+    .dropdown-container .dropdown-menu {
+        position: fixed;
+    }
+
+    #dropdown-toggle {
+        display: none;
+    }
+
+    .dropdown-label {
+        cursor: pointer;
+        background-color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: #911693;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 10px;
+        border: 1px solid #911693;
+    }
+
+    .dropdown-label:hover {
+        background-color: #E5C0D1;
+    }
+
+    .dropdown-menu {
+        display: none;
+        /* position: fixed; */
+        top: 100px;
+        /* Directly below navbar */
+        left: 0;
+        width: 100vw;
+        background: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 999;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #dropdown-toggle:checked~.dropdown-menu,
+    .dropdown-container:hover .dropdown-menu,
+    .dropdown-menu:hover {
+        display: flex;
+    }
+
+    .option {
+        flex: 1;
+        margin-left: 10px;
+        text-align: center;
+        padding: 20px;
+        background: #3E043B;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 16px;
+        border-right: 1px solid #5c0d8a;
+    }
+
+    .option:last-child {
+        border-right: none;
+    }
+
+    .option:hover {
+        background: #911693;
+        color: white;
+    }
+
+    .sub-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 30%;
+        background: #6a0dad;
+        color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 10px;
+        min-width: 150px;
+        /* z-index: 1000; */
+    }
+
+    .option:hover .sub-dropdown {
+        display: block;
+    }
+
+    .sub-option {
+        padding: 10px;
+        background: #6a0dad;
+        color: pink;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background 0.3s;
+        text-align: center;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .sub-option:last-child {
+        border-bottom: none;
+    }
+
+    .sub-option:hover {
+        background: #3E043B;
+        color: pink;
+    }
+
+    .option {
+        position: relative;
+    }
+
+    main {
+        padding-top: 100px;
+        /* Ensure enough space below navbar */
+        overflow: hidden;
+    }
+
+    .x1 {
+        margin-left: 100px;
+        padding: 20px;
+    }
+
+
+
+    .x1 h1 {
+        font-size: 50px;
+    }
+
+    .x1 h1:hover {
+        text-decoration: underline;
+        color: #911693;
+    }
+
+    .y1 {
+        padding: 45px;
+        width: 1170px;
+        height: 320px;
+        background-color: whitesmoke;
+        box-shadow: 3px 3px 6px gray;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+
+    .y1 p {
+        line-height: 2;
+        color: purple;
+    }
+
+    .x2,
+    .x6 {
+        width: 1080px;
+        height: 390px;
+        padding: 30px;
+        margin-left: 115px;
+        background-color: whitesmoke;
+        box-shadow: 3px 3px 6px gray;
+        border-radius: 10px;
+    }
+
+    .x2 img,
+    .x6 img {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 980px;
+        height: 300px;
+    }
+
+    .x3,
+    .x4,
+    .x5 {
+        margin-left: 118px;
+    }
+
+    .x3 h1:hover,
+    .x4 h1:hover,
+    .x5 h1:hover {
+        text-decoration: underline;
+        color: #911693;
+    }
+
+    .y2,
+    .y3,
+    .y4 {
+        display: flex;
+        gap: 30px;
+        /* padding: 20px; */
+    }
+
+    .y2 .card,
+    .y3 .card {
+        width: 370px;
+        height: 420px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        transition: 0.3s ease-in-out;
+    }
+
+    .y4 .card {
+        width: 370px;
+        height: 380px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        transition: 0.3s ease-in-out;
+    }
+
+    .y2 .card:hover,
+    .y3 .card:hover,
+    .y4 .card:hover {
+        box-shadow: 6px 6px 15px #4a0a6e;
+        transform: translateY(-5px);
+    }
+
+    .y2 .card img,
+    .y3 .card img,
+    .y4 .card img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .y2 .card p,
+    .y3 .card p {
+        font-size: 16px;
+        font-weight: bold;
+        color: #6a0dad;
+        padding: 10px;
+    }
+
+
+    .y4 .card p {
+        font-size: 25px;
+        font-weight: bolder;
+        color: #6a0dad;
+        padding: 40px;
+    }
+
+    .y2 .card .z1,
+    .y3 .card .z2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #6a0dad;
+        padding: 10px;
+    }
+
+    .y4 .card .heart-icon {
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        /* background-color: gainsboro; */
+        /* border-radius: 50%; */
+        padding: 5px;
+        width: 40px;
+        height: 30px;
+    }
+
+
+    .y4 .card .heart-icon i {
+        width: 20px;
+        height: 20px;
+        color: #b01274;
+        padding-right: 3px;
+
+    }
+
+    .y4 .card .heart-icon i:hover {
+        color: #6a0dad;
+    }
+
+    .more-pets {
+        width: 370px;
+        height: 380px;
+        background: #6a0dad;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+    }
+
+    .more-pets:hover {
+        box-shadow: 6px 6px 15px #4a0a6e;
+        transform: translateY(-5px);
+    }
+
+    .more-pets p {
+        margin: 70px 20px;
+        font-size: 20px;
+    }
+
+    .more-pets i {
+        font-size: 100px;
+        margin-top: 20px;
+    }
+
+    .more-pets .meet-btn {
+        background: white;
+        color: #6a0dad;
+        padding: 8px 15px;
+        border-radius: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .more-pets .meet-btn:hover {
+        background: #ddd;
+    }
+
+
+
+
+    footer {
+        background-color: #5c0d8a;
+        color: white;
+        padding: 20px;
+        bottom: 0px;
+        font-family: Arial, sans-serif;
+        margin-top: 190px;
+
+    }
+
+    .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
+        padding: 5px;
+    }
+
+    .top-bar img {
+        height: 45px;
+        margin-right: 10px;
+        width: 70px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .footer-column {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px;
+    }
+
+    .footer-column h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .footer-column a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .footer-column a:hover {
+        text-decoration: underline;
+    }
+
+    .newsletter-box {
+        background-color: #f3e6f7;
+        padding: 20px;
+        border-radius: 10px;
+        color: #5c0d8a;
+        text-align: center;
+        max-width: 300px;
+    }
+
+    .signup-btn {
+        background-color: #5c0d8a;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .signup-btn:hover {
+        background-color: #4a0a6e;
+    }
+
+    .bottom-bar {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+
+    }
+
+    .bottom-bar p {
+        font-weight: bold;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+
+    }
+
+    .social-icons a {
+        color: white;
+        margin: 10px;
+    }
+
+    .social-icons a:hover {
+        font-size: larger;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block main_block %}
+
+
+<div class="x1">
+    <h1>Cat & Kitten Adoption</h1>
+    <br>
+    <div class="y1">
+        <p>Looking to welcome a new cat or kitten into your family? Our comprehensive articles have all the information
+            you need to adopt a feline companion successfully. From finding the best organization to understanding the
+            adoption process, our team of experts and animal advocates guides you every step of the way. Whether you’re
+            looking for a playful kitten, a laid-back senior cat or even a specific breed, there’s a diverse range of
+            adoptable cats out there waiting for you. Read our articles today and find your perfect (or purrfect) feline
+            friend!</p>
+        <img src="https://imgs.search.brave.com/lWvlkz2PqxDXD33q0Vg4mpeu4hlU9yU9pMSzzhrYGWM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTI1/MzUyMzQ4MC9waG90/by9tb20tYW5kLWRh/dWdodGVyLXBldHRp/bmctdGhlaXItY2F0/LWJvdGgtc21pbGlu/Zy5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9bkFPMTg0X1dM/Qk5zbk54U0dab2wz/czNiYkk4TDg0LV9T/M01WWEVRRU0wWT0"
+            alt="">
+    </div>
+
+
+</div>
+
+<br>
+
+<div class="x2">
+    <img src="https://imgs.search.brave.com/sdTySF2FQuFaAfidzbIo-qfkizkCa3s2JNhOt_WGPQk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzkzLzkxLzYx/LzM2MF9GXzg5Mzkx/NjE2OV9yeWlrUDJn/MXRvUUJaNktqZEgz/MDRwV3ZMS3UwTjZT/bC5qcGc"
+        alt="">
+</div>
+
+<br><br>
+
+<div class="x3">
+    <h1>Finding a Cat</h1>
+    <br>
+    <div class="y2">
+        <div class="card">
+            <img src="https://imgs.search.brave.com/OCKbQS5RsTrEnOi5RCXKQzMvpSpHH89NEz1oZqYmXMc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA5LzI2LzgyLzk1/LzM2MF9GXzkyNjgy/OTU5NV9wdDR4TFNj/S3J6YkFGZ0ZuRlBl/cE4wdG5CdVRKV1hP/OS5qcGc"
+                alt="">
+            <p>Finding a Cat</p>
+            <p class="z1"><b>Nerdiest. Cat Names. Ever </b></p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/3BTgo27KQ9rIPE9ObE1D0ULs58vgl5X3f84nCfkaho8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzc2Lzk1Lzg4/LzM2MF9GXzI3Njk1/ODg3OF91cllYbFFr/cGxqODBjUzBZNlJr/N2d0Mk9ST2xIemp4/ai5qcGc"
+                alt="">
+            <p>Finding a Cat</p>
+            <p class="z1"><b>Best Cat & Cute Kitten Names</b></p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/VhMDWzoNR66rdlBdoC8QR-HTdg_1qBwU8Bt1dy0CLOE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTMx/NzE0OTI3Ni9waG90/by90d28tdHdpbi1n/aXJscy1wbGF5LXdp/dGgtYS1jYXQtaW4t/dGhlLWJhY2t5YXJk/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1STnlxd0VraEVO/clZVcU9PdzVOSXpp/Y3NHME5sRW9mN0Q2/cU9zY0RxNV9RPQ"
+                alt="">
+            <p>Finding a Cat</p>
+            <p class="z1">Adopting The Right Cat For You</p>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="x4">
+    <h1>Your New Cat</h1>
+    <br>
+    <div class="y3">
+        <div class="card">
+            <img src="https://imgs.search.brave.com/sfV6EJy-sQiYIZ4ysxtspRod9TM3NolLSYfnWCfYSKk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTA4/NDIzMjgxL3Bob3Rv/L2NhdHMtc2hlbHRl/ci5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9dlpic1ZQRW00/TExMNnBIQU5PZFMt/MlFBY3J1bGoyMWp4/eDJLdllMMHhMST0"
+                alt="">
+            <p>Your New Cat</p>
+            <p class="z2">General Cat Care</p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/mpoS6awQIpVcbYwFDkuHGHjmd1dpLjXnU7M81Py1xDM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM2/ODE4ODUyNC9waG90/by9zZW5pb3ItbWFu/LXdvcmtpbmctYXQt/aG9tZS1vbi1sYXB0/b3Atd2l0aC1oaXMt/Y2F0LmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz13ZEVPYjRL/SGVUWkRGSVhFZEMy/RDZTZlA3T1ZabUcx/TmthTnRJTFdSSWdR/PQ"
+                alt="">
+            <p>Your New Cat</p>
+            <p class="z2"><b>9 Ways To Welcome Home Your New Cat</b></p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/6ppu_QL7LOzZlylnZGH9l5MHveHZoTKGkzwHpZpUVPU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDk4/NjAyNzMzL3Bob3Rv/L2tpdHRlbi1jYXRz/LWJhYnktYW5pbWFs/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1CcENpeG04N3U3/RUJrT0VGTlR3OXB1/akRIbjBxVXBpbXRi/UGxMU1BjNHhrPQ"
+                alt="">
+            <p>Your New Cat</p>
+            <p class="z2">Can I Keep My Indoor/Outdoor Cat Inside Only</p>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="x5">
+    <h1>Pets Available for Adoption Nearby</h1>
+    <br>
+    <div class="y4">
+        <div class="card">
+            <img src="https://imgs.search.brave.com/90NssfGMVSf6lzYvYlrLJ6ucYG9S2xLuVqnffHMob8k/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2FmZWhhdmVuZm9y/Y2F0cy5vcmcvaW1h/Z2VzL3BldF9pbWFn/ZXMvMTU4MDktMC5q/cGc"
+                alt="">
+            <div class="heart-icon">
+                <i class="fa-regular fa-heart fa-2xl"></i>
+            </div>
+            <p>Billy</p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/59cFj79jXhdDw5egQaDnunecZruYkmEBa4_ks0iUcTo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvOTc5/MTk1ODkyL3Bob3Rv/L2JlYXV0aWZ1bC1y/ZXNjdWVkLWtpdHRl/bi5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9dWdVSjBPaDVR/eFJrS0NfYnp0Y2pj/NHVydU5zZTkwNElU/NTRLNWItV1k5bz0"
+                alt="">
+            <div class="heart-icon">
+                <i class="fa-regular fa-heart fa-2xl"></i>
+            </div>
+            <p>Hampy</p>
+        </div>
+
+        <div class="more-pets">
+            <i class="fa-solid fa-paw fa-2xl"></i><br>
+            <p>6 more pets available on Petfinder</p>
+            <hr>
+            <div class="meet-btn">MEET THEM</div>
+        </div>
+
+    </div>
+</div>
+
+<br><br>
+
+<div class="x6">
+    <img src="https://imgs.search.brave.com/Nz4Qawednj_7BWcPaX9j05IxVlsVZN1QW_jtccD86u4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQy/NjQ3NTc0OC9waG90/by9raXR0ZW5zLWFu/ZC1tb3RoZXItY2F0/LWluLWEtc2hlbHRl/ci5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9UWE0bWlXa0V1/OWdRdklpZlNEU3Nn/QTA5eHNwTnhDZnNh/SGVyTkt6eGltZz0"
+        alt="">
+</div>
+{% endblock %}
