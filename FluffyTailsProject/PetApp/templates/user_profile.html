@@ -74,10 +74,12 @@
 <h2>User Profile</h2>
 
 <div class="profile-card">
+    <img src="{{ user.profile.image.url }}" alt="Profile Image" width="150" height="150" style="border-radius: 50%;">
     <h1>Welcome, {{ user.username }}</h1>
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Name:</strong> {{ user.username }}</p>
-
+    <a href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit Profile</a>
     <a href="{% url 'home' %}" class="btn btn-secondary">Back to Dashboard</a>
+
 </div>
 {% endblock %}

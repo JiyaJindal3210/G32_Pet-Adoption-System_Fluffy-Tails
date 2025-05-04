@@ -354,25 +354,35 @@ def reject_order(request, order_id):
 
 
 @login_required
-def contact_view(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-
-        ContactMessage.objects.create(
-            name=name,
-            email=email,
-            subject=subject,
-            message=message,
-            sent_at=timezone.now()
-        )
-        return redirect('view_messages')  
-
-    return render(request, 'contactus.html')
-
-@login_required
 def view_messages(request):
     all_messages = ContactMessage.objects.all().order_by('-sent_at')
     return render(request, 'view_messages.html', {'all_messages': all_messages})
+
+
+
+from .forms import UserUpdateForm, ProfileUpdateForm
+from .models import Profile
+
+@login_required
+def edit_profile(request):
+    # Check if the user has a profile, and create it if not
+    if not hasattr(request.user, 'profile'):
+        Profile.objects.create(user=request.user)
+
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('view_profile')  # redirect to the profile page
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    return render(request, 'edit_profile.html', {
+        'u_form': u_form,
+        'p_form': p_form
+    })
