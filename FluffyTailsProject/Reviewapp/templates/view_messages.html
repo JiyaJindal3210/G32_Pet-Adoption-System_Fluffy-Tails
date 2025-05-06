@@ -68,9 +68,10 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Message</th>
+                <th>Sent At</th>
             </tr>
         </thead>
-        <tbody>
+       <tbody>
             {% for message in all_messages %}
             <tr>
                 <td>{{ message.name }}</td>
@@ -83,6 +84,6 @@
     </table>
     {% else %}
     <p>No messages available.</p>
-    {% endif %}
+    {% endif %} 
 </div>
 {% endblock %}

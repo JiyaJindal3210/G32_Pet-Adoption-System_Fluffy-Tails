@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
+import requests
 
 
 
@@ -42,7 +43,18 @@ def aboutus2(request):
 
 @login_required
 def aboutus(request):
-    return render(request, 'aboutus.html')
+    flask_api_url = "http://127.0.0.1:5000/aboutus"
+
+    try:
+        response = requests.get(flask_api_url)
+        if response.status_code == 200:
+            about_info = response.json()
+        else:
+            about_info = {"error": "Could not fetch About Us information."}
+    except requests.exceptions.RequestException as e:
+        about_info = {"error": f"Error occurred: {e}"}
+
+    return render(request, 'aboutus.html', {'about_info': about_info})
 
 @login_required
 def adopting_pets(request):
@@ -293,6 +305,28 @@ def view_cart(request):
     cart_pets = Pet.objects.filter(pet_id__in=cart)
     return render(request, 'cart.html', {'cart_pets': cart_pets})
 
+
+@login_required
+def about_view(request):
+    user = request.user
+    flask_api_url = "http://127.0.0.1:5000/aboutus"
+    jwt_token = request.session.get('jwt_token')
+
+    headers = {
+        'Authorization': f'Bearer {jwt_token}'  # Optional if your Flask route requires auth
+    }
+
+    try:
+        response = requests.get(flask_api_url, headers=headers)
+        if response.status_code == 200:
+            about_info = response.json()
+        else:
+            about_info = {"error": "Could not fetch about us information"}
+    except requests.exceptions.RequestException as e:
+        about_info = {"error": f"Error occurred: {e}"}
+
+    return render(request, 'about.html', {'user': user, 'about_info': about_info})
+
 @login_required
 def adopt_pets(request):
     if request.method == "POST":
@@ -355,8 +389,30 @@ def reject_order(request, order_id):
 
 @login_required
 def view_messages(request):
-    all_messages = ContactMessage.objects.all().order_by('-sent_at')
+    try:
+        response = requests.get('http://127.0.0.1:5000/api/messages')
+        if response.status_code == 200:
+            all_messages = response.json()
+            print("Flask messages fetched:", all_messages)  # Debugging output
+        else:
+            all_messages = []
+            print("Failed to fetch messages, status code:", response.status_code)
+    except Exception as e:
+        print("Error fetching messages from Flask:", e)
+        all_messages = []
+
     return render(request, 'view_messages.html', {'all_messages': all_messages})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
