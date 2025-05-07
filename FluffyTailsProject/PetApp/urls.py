@@ -15,8 +15,7 @@ urlpatterns = [
     path('view-profile/', views.view_profile, name='view_profile'),
     path('view-profile_admin/', views.view_profile_admin, name='view_profile_admin'),
     
-    path('edit-profile/', views.edit_profile, name='edit_profile'),
-   
+
 
     path('addbreed/', views.add_breed_view, name='addbreed'),
     path('breed/<int:breed_id>/pets/', views.breed_pet_list_view, name='breed_pet_list'),
@@ -46,10 +45,12 @@ urlpatterns = [
     # path('contact/', views.contact_view, name='contact'),
 
     path('cart/adopt/', views.adopt_pets, name='adopt_pets'),
-
-    path('view-messages/', views.view_messages, name='view_messages'),
-
     path('orders/', views.orders_view, name='orders'),
-    path('orders/<int:order_id>/accept/', lambda r, order_id: views.update_order_status(r, order_id, "Accepted"), name='accept_order'),
-    path('orders/<int:order_id>/reject/', lambda r, order_id: views.update_order_status(r, order_id, "Rejected"), name='reject_order'),
+
+
+    path('orders/accept/<int:order_id>/', views.accept_order, name='accept_order'),
+    path('orders/reject/<int:order_id>/', views.reject_order, name='reject_order'),
+
+    path('contactus/', views.contact_view, name='contactus'),
+    path('view-messages/', views.view_messages, name='view_messages'),
 ]

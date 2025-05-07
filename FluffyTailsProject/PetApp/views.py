@@ -11,7 +11,6 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
-import requests
 
 
 
@@ -43,18 +42,7 @@ def aboutus2(request):
 
 @login_required
 def aboutus(request):
-    flask_api_url = "http://127.0.0.1:5000/aboutus"
-
-    try:
-        response = requests.get(flask_api_url)
-        if response.status_code == 200:
-            about_info = response.json()
-        else:
-            about_info = {"error": "Could not fetch About Us information."}
-    except requests.exceptions.RequestException as e:
-        about_info = {"error": f"Error occurred: {e}"}
-
-    return render(request, 'aboutus.html', {'about_info': about_info})
+    return render(request, 'aboutus.html')
 
 @login_required
 def adopting_pets(request):
@@ -305,28 +293,6 @@ def view_cart(request):
     cart_pets = Pet.objects.filter(pet_id__in=cart)
     return render(request, 'cart.html', {'cart_pets': cart_pets})
 
-
-@login_required
-def about_view(request):
-    user = request.user
-    flask_api_url = "http://127.0.0.1:5000/aboutus"
-    jwt_token = request.session.get('jwt_token')
-
-    headers = {
-        'Authorization': f'Bearer {jwt_token}'  
-    }
-
-    try:
-        response = requests.get(flask_api_url, headers=headers)
-        if response.status_code == 200:
-            about_info = response.json()
-        else:
-            about_info = {"error": "Could not fetch about us information"}
-    except requests.exceptions.RequestException as e:
-        about_info = {"error": f"Error occurred: {e}"}
-
-    return render(request, 'about.html', {'user': user, 'about_info': about_info})
-
 @login_required
 def adopt_pets(request):
     if request.method == "POST":
@@ -355,89 +321,58 @@ def adopt_pets(request):
 
 @login_required
 def orders_view(request):
-    try:
-        response = requests.get('http://127.0.0.1:5000/api/orders', cookies=request.COOKIES)
-        if response.status_code == 200:
-            orders = response.json()
-            return render(request, 'orders.html', {'orders': orders})
-        else:
-            messages.error(request, "Failed to fetch orders.")
-    except:
-        messages.error(request, "API connection failed.")
-    return render(request, 'orders.html', {'orders': []})
+    orders = Order.objects.filter(user=request.user) if not request.user.is_superuser else Order.objects.all()
 
+    if not request.user.is_superuser:
+        updated_orders = orders.filter(status__in=["Accepted", "Rejected"])
+        if updated_orders.exists():
+            for order in updated_orders:
+                if order.status == "Accepted":
+                    messages.success(request, f"Great news! Your order #{order.id} has been accepted! 🐾")
+                elif order.status == "Rejected":
+                    messages.error(request, f"Sorry! Your order #{order.id} was rejected. 😢")
 
+    return render(request, 'orders.html', {'orders': orders})
 
 def is_admin(user):
     return user.is_superuser
 
 
 @user_passes_test(is_admin)
-def update_order_status(request, order_id, status):
-    if request.method == "POST":
-        API_URL = f"http://127.0.0.1:5000/api/orders/{order_id}/status"
-        try:
-            response = requests.post(API_URL, json={"status": status}, cookies=request.COOKIES)
-            if response.status_code == 200:
-                messages.success(request, f"Order #{order_id} marked as {status}")
-            else:
-                messages.error(request, f"Failed to update order #{order_id}")
-        except:
-            messages.error(request, "Connection to Flask API failed.")
-    return redirect('orders')
+def accept_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order.status = 'Accepted'
+    order.save()
+    return HttpResponseRedirect(reverse('orders'))
 
+@user_passes_test(is_admin)
+def reject_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order.status = 'Rejected'
+    order.save()
+    return HttpResponseRedirect(reverse('orders'))
+
+
+@login_required
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        ContactMessage.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message,
+            sent_at=timezone.now()
+        )
+        return redirect('view_messages')  
+
+    return render(request, 'contactus.html')
 
 @login_required
 def view_messages(request):
-    try:
-        response = requests.get('http://127.0.0.1:5000/api/messages')
-        if response.status_code == 200:
-            all_messages = response.json()
-            print("Flask messages fetched:", all_messages)  
-        else:
-            all_messages = []
-            print("Failed to fetch messages, status code:", response.status_code)
-    except Exception as e:
-        print("Error fetching messages from Flask:", e)
-        all_messages = []
-
+    all_messages = ContactMessage.objects.all().order_by('-sent_at')
     return render(request, 'view_messages.html', {'all_messages': all_messages})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-from .forms import UserUpdateForm, ProfileUpdateForm
-from .models import Profile
-
-@login_required
-def edit_profile(request):
-    if not hasattr(request.user, 'profile'):
-        Profile.objects.create(user=request.user)
-
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            messages.success(request, 'Your profile has been updated!')
-            return redirect('view_profile') 
-    else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
-
-    return render(request, 'edit_profile.html', {
-        'u_form': u_form,
-        'p_form': p_form
-    })

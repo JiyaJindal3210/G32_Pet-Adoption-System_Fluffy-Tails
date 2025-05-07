@@ -26,7 +26,7 @@
         font-size: 2.5rem;
         color: #ff69b4;
         font-weight: 700;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
         margin-bottom: 30px;
         margin-top: 100px;
     }
@@ -41,8 +41,7 @@
         background-color: #ffe0f0;
     }
 
-    .table th,
-    .table td {
+    .table th, .table td {
         vertical-align: middle;
         text-align: center;
         font-size: 1rem;
@@ -100,12 +99,21 @@
         font-style: italic;
         margin-top: 60px;
     }
+    
 </style>
 {% endblock %}
 
 {% block main_block %}
 <div class="container mt-5">
     <h2 class="text-center">📝 Adoption Orders</h2>
+
+    <!-- {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %} -->
 
     {% if orders %}
     <table class="table table-bordered shadow-sm">
@@ -125,37 +133,31 @@
             {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.user }}</td>
+                <td>{{ order.user.username }}</td>
                 <td>
                     <ul>
-                        {% for pet in order.pets %}
-                        <li>{{ pet }}</li>
+                        {% for pet in order.pets.all %}
+                        <li>{{ pet.name }}</li>
                         {% endfor %}
                     </ul>
                 </td>
-                <td>{{ order.date }}</td>
+                <td>{{ order.order_date|date:"M d, Y H:i" }}</td>
                 <td>
                     {% if order.status == 'Accepted' %}
-                        <div class="badge bg-success text-white">Accepted</div>
+                        <span class="badge bg-success">Accepted</span>
                     {% elif order.status == 'Rejected' %}
-                        <div class="badge bg-danger text-white">Rejected</div>
-                    {% elif order.status == 'Pending' %}
-                        <div class="badge bg-warning text-dark">Pending</div>
+                        <span class="badge bg-danger">Rejected</span>
                     {% else %}
-                        <div class="badge bg-secondary text-white">{{ order.status }}</div>
+                        <span class="badge bg-warning text-dark">Pending</span>
                     {% endif %}
                 </td>
                 {% if user.is_superuser %}
                 <td>
                     {% if order.status == 'Pending' %}
-                    <form action="{% url 'update_order_status' order.id 'Accepted' %}" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-success btn-sm">Accept</button>
-                    </form>
-                    <form action="{% url 'update_order_status' order.id 'Rejected' %}" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
-                    </form>
+                        <a href="{% url 'accept_order' order.id %}" class="btn btn-success btn-sm">Accept</a>
+                        <a href="{% url 'reject_order' order.id %}" class="btn btn-danger btn-sm">Reject</a>
                     {% else %}
-                    <em>No actions</em>
+                        <em>No actions</em>
                     {% endif %}
                 </td>
                 {% endif %}
@@ -164,7 +166,7 @@
         </tbody>
     </table>
     {% else %}
-    <p class="text-center no-orders">No adoption orders found. 🐶🐱</p>
+        <p class="text-center no-orders">No adoption orders found. 🐶🐱</p>
     {% endif %}
 </div>
 {% endblock %}

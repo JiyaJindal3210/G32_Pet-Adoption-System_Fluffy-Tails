@@ -4,7 +4,6 @@
 
 {% block head %}
 <style>
-   
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -204,39 +203,63 @@
         margin-top: 20px;
         text-align: center;
     }
-
 </style>
 {% endblock %}
 
+
+
+
+
+
 {% block main_block %}
+
 <div class="top1">
     <img src="https://rspca.sfo2.cdn.digitaloceanspaces.com/public/Uploads/adopt-a-pet-adopting-a-dog-selecting-your-dog__FocusFillWzE0NzIsNjI0LCJ5IiwxMDFd.jpg" alt="Fluffy Tails">
     <div class="overlay">
-        <h3>About {{ about_info.application_name|default:"Our App" }}</h3>
+        <h3>About FluffyTails</h3>
         <h5>"Every rescued pet has a story. Be part of their happy ending."</h5>
     </div>
 </div>
 
 <div class="content">
-    <p>{{ about_info.description|default:"" }}</p>
-    <p>{{ about_info.mission|default:"" }}</p>
-    <p>{{ about_info.vision|default:"" }}</p>
+    <p>Whether you need in-home pet grooming, pet boarding, pet training, dog walking, pet insurance, pet
+        relocation, or vet on call, ThePetNest connects pet parents with pet care heroes who’ll treat their pet like
+        family.</p>
+
+    <p>We understand your pet is family. And you can trust us to keep your pet happy, healthy, and sweet as ever.
+    </p>
+
+    <p>But it’s not just about pet love. The FluffyTails is also committed to making pet care safe, easy, and affordable
+        so that everyone can experience the unconditional love of a pet. Whatever you and your furr babies are into,
+        we’re into it too. And we’ve got your back. Anytime.
+        Anywhere.</p>
+
+    <p>The FluffyTails donates a portion of every service to Pet NGO’s & Rescue shelters through this program. We also
+        provide meals to shelter dogs in India.</p>
 </div>
 
-<div class="heading">Our Goals</div>
+<div class="heading">Millions of services booked. Thousands of wagging tails.</div>
+
+<div class="stats">
+    <div>35+ <span>Cities</span></div>
+    <div>1500+ <span>PetCare Heroes</span></div>
+    <div>96% <span>5-star reviews</span></div>
+</div>
+
 <div class="features">
+    <h2>5-Star Petcare Heroes in your neighborhood</h2>
     <ul class="feature-list">
-        {% for goal in about_info.goals %}
-        <li>{{ goal }}</li>
-        {% endfor %}
+        <li>Background or identity checks</li>
+        <li>Thefluffytails Guarantee</li>
+        <li>Reservation protection</li>
+        <li>24/7 support</li>
+        <li>Ongoing service education</li>
+        <li>Verified reviews</li>
+        <li>Trust and safety experts</li>
     </ul>
 </div>
 
-<div class="heading">Contact Us</div>
-<div class="content">
-    <p><strong>Email:</strong> {{ about_info.contact.email|default:"N/A" }}</p>
-    <p><strong>Phone:</strong> {{ about_info.contact.phone|default:"N/A" }}</p>
+<div class="footer">Good Pets. Good people.</div>
 </div>
 
-<div class="footer">Good Pets. Good people.</div>
 {% endblock %}
