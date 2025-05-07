@@ -46,11 +46,10 @@ urlpatterns = [
     # path('contact/', views.contact_view, name='contact'),
 
     path('cart/adopt/', views.adopt_pets, name='adopt_pets'),
-    path('orders/', views.orders_view, name='orders'),
-
-
-    path('orders/accept/<int:order_id>/', views.accept_order, name='accept_order'),
-    path('orders/reject/<int:order_id>/', views.reject_order, name='reject_order'),
 
     path('view-messages/', views.view_messages, name='view_messages'),
+
+    path('orders/', views.orders_view, name='orders'),
+    path('orders/<int:order_id>/accept/', lambda r, order_id: views.update_order_status(r, order_id, "Accepted"), name='accept_order'),
+    path('orders/<int:order_id>/reject/', lambda r, order_id: views.update_order_status(r, order_id, "Rejected"), name='reject_order'),
 ]

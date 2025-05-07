@@ -355,36 +355,36 @@ def adopt_pets(request):
 
 @login_required
 def orders_view(request):
-    orders = Order.objects.filter(user=request.user) if not request.user.is_superuser else Order.objects.all()
+    try:
+        response = requests.get('http://127.0.0.1:5000/api/orders', cookies=request.COOKIES)
+        if response.status_code == 200:
+            orders = response.json()
+            return render(request, 'orders.html', {'orders': orders})
+        else:
+            messages.error(request, "Failed to fetch orders.")
+    except:
+        messages.error(request, "API connection failed.")
+    return render(request, 'orders.html', {'orders': []})
 
-    if not request.user.is_superuser:
-        updated_orders = orders.filter(status__in=["Accepted", "Rejected"])
-        if updated_orders.exists():
-            for order in updated_orders:
-                if order.status == "Accepted":
-                    messages.success(request, f"Great news! Your order #{order.id} has been accepted! 🐾")
-                elif order.status == "Rejected":
-                    messages.error(request, f"Sorry! Your order #{order.id} was rejected. 😢")
 
-    return render(request, 'orders.html', {'orders': orders})
 
 def is_admin(user):
     return user.is_superuser
 
 
 @user_passes_test(is_admin)
-def accept_order(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-    order.status = 'Accepted'
-    order.save()
-    return HttpResponseRedirect(reverse('orders'))
-
-@user_passes_test(is_admin)
-def reject_order(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-    order.status = 'Rejected'
-    order.save()
-    return HttpResponseRedirect(reverse('orders'))
+def update_order_status(request, order_id, status):
+    if request.method == "POST":
+        API_URL = f"http://127.0.0.1:5000/api/orders/{order_id}/status"
+        try:
+            response = requests.post(API_URL, json={"status": status}, cookies=request.COOKIES)
+            if response.status_code == 200:
+                messages.success(request, f"Order #{order_id} marked as {status}")
+            else:
+                messages.error(request, f"Failed to update order #{order_id}")
+        except:
+            messages.error(request, "Connection to Flask API failed.")
+    return redirect('orders')
 
 
 @login_required
