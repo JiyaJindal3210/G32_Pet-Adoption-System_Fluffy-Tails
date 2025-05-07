@@ -313,7 +313,7 @@ def about_view(request):
     jwt_token = request.session.get('jwt_token')
 
     headers = {
-        'Authorization': f'Bearer {jwt_token}'  # Optional if your Flask route requires auth
+        'Authorization': f'Bearer {jwt_token}'  
     }
 
     try:
@@ -393,7 +393,7 @@ def view_messages(request):
         response = requests.get('http://127.0.0.1:5000/api/messages')
         if response.status_code == 200:
             all_messages = response.json()
-            print("Flask messages fetched:", all_messages)  # Debugging output
+            print("Flask messages fetched:", all_messages)  
         else:
             all_messages = []
             print("Failed to fetch messages, status code:", response.status_code)
@@ -421,7 +421,6 @@ from .models import Profile
 
 @login_required
 def edit_profile(request):
-    # Check if the user has a profile, and create it if not
     if not hasattr(request.user, 'profile'):
         Profile.objects.create(user=request.user)
 
@@ -433,7 +432,7 @@ def edit_profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, 'Your profile has been updated!')
-            return redirect('view_profile')  # redirect to the profile page
+            return redirect('view_profile') 
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
